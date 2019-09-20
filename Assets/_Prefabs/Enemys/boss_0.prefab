@@ -101,6 +101,8 @@ MonoBehaviour:
   maxHitPoint: 10
   pushRecoverySpeed: 0.5
   xpValue: 10
+  isAlive: 1
+  timeToRespawn: 10
   _________: 0
   speedMultiple: 0.5
   triggerLength: 1
@@ -121,13 +123,13 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  fireballs:
+  - {fileID: 8400066305750144968}
+  - {fileID: 8400066306346234707}
   fireballSpeed:
   - 2.5
   - -2.5
   distance: 0.2
-  fireballs:
-  - {fileID: 8400066305750144968}
-  - {fileID: 8400066306346234707}
 --- !u!61 &8400066305317241433
 BoxCollider2D:
   m_ObjectHideFlags: 0

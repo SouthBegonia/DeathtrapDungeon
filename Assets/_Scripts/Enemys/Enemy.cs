@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //敌人公用脚本:包括击杀获得经验值,追逐Player功能等
-/*更多可加入的功能:
- *  - 敌人未追逐Player时随机走动
+/* 目前已有的功能:
+ *  - 追逐玩家进行攻击伤害
+ *  - 死亡一段时间后复活
+ * 
+ * 更多可加入的功能:
+ *  - 未追逐Player时随机走动
  *  - 敌人间的相互厮杀
  * 
  */
 public class Enemy : Mover
 {
     public int xpValue = 1;                 //击杀获得经验值
+    public bool isAlive = true;            //Enenmy是否存活
+    public float timeToRespawn = 10f;       //多少秒后Enemy复活
     public bool _________;
 
-    //追逐逻辑  :  
+    //追逐逻辑:  
     public float speedMultiple = 0.75f;     //Enemy的速度为正常速度的speedMultiple倍
     public float triggerLength = 1.0f;      //在多少距离内能触发追逐
     public float chaseLength = 1.0f;        //能追逐到多远的距离
@@ -23,7 +29,7 @@ public class Enemy : Mover
     private Transform playTransform;        //玩家标识
     private Vector3 startingPosition;       //Enemy原始坐标
 
-    //碰撞器
+    //hitbox碰撞器
     public ContactFilter2D filter;
     private BoxCollider2D hitBox;
     private Collider2D[] hits = new Collider2D[10];
@@ -50,6 +56,29 @@ public class Enemy : Mover
     {
         collidingWithPlayer = false;
 
+        //仅当Enemy存活时才进行追逐判定
+        if (isAlive)
+            ChasingTarget();
+   
+        hitBox.OverlapCollider(filter, hits);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i] == null)
+                continue;
+
+            //如果检测到范围内存在Player
+            if(hits[i].tag=="Fighter" && hits[i].name == "Player")
+            {
+                collidingWithPlayer = true;
+            }
+
+            hits[i] = null;
+        }
+    }
+
+    //追逐玩家函数:
+    protected virtual void ChasingTarget()
+    {
         //若Player在Enemy原始坐标chaseLength范围内时,可能被追逐
         if (Vector3.Distance(playTransform.position, startingPosition) < chaseLength)
         {
@@ -79,32 +108,35 @@ public class Enemy : Mover
             UpdateMotor((startingPosition - transform.position), speedMultiple);
             chasing = false;
         }
-
-   
-        hitBox.OverlapCollider(filter, hits);
-
-        for (int i = 0; i < hits.Length; i++)
-        {
-            if (hits[i] == null)
-                continue;
-
-            //如果检测到范围内存在Player
-            if(hits[i].tag=="Fighter" && hits[i].name == "Player")
-            {
-                collidingWithPlayer = true;
-            }
-
-            hits[i] = null;
-        }
     }
 
     //Enemy死亡函数
     protected override void Death()
     {
-        Destroy(gameObject);
+        //取消旧版死亡销毁机制
+        //Destroy(gameObject);
 
+        //新版死亡复活机制
+        isAlive = false;
+        hitBox.enabled = false;
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        StartCoroutine("WaitingForRespawn");
+               
         //玩家获得经验,显示+xp的UI
         GameManager.instance.GrantXP(xpValue);
         GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
+    }
+
+    IEnumerator WaitingForRespawn()
+    {
+        yield return new WaitForSeconds(3);
+        isAlive = true;
+        hitBox.enabled = true;
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+
+        hitPoint = maxHitPoint;
+        gameObject.transform.position = startingPosition;      
     }
 }

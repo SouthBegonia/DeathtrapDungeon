@@ -17,7 +17,11 @@ public class Portal_Door : Colliderable
         if (coll.name == "Player")
         {
             //朝向boxOUT的y轴正方向移动一定距离防止再次出发传送
-            Vector3 vector = boxOUT.transform.localPosition;
+            Vector3 vector = boxOUT.transform.position;
+
+            //修正Z轴:保持Player与其他始终在Z=0平面,防止portal_Door的传送出bug
+            vector.z = 0;
+
             if (boxOUT.gameObject.transform.rotation.z == 0)
                 vector.y += 0.2f;
             else
