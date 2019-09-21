@@ -8,7 +8,7 @@ public class Boss0 : Enemy
     public float[] fireballSpeed = { 2.5f, -2.5f };
     private SpriteRenderer spriteRenderer;
 
-    public float distance = 0.25f;      //火球间距
+    public float fireballDistance = 0.25f;      //火球间距
 
     private float startTriggerLength;
     private float startChaseLength;
@@ -32,7 +32,7 @@ public class Boss0 : Enemy
 
         for(int i = 0; i < fireballs.Length; i++)
         {
-            fireballs[i].position = transform.position + new Vector3(-Mathf.Cos(Time.time * fireballSpeed[i]) * distance, Mathf.Sin(Time.time * fireballSpeed[i]) * distance, 0);
+            fireballs[i].position = transform.position + new Vector3(-Mathf.Cos(Time.time * fireballSpeed[i]) * fireballDistance, Mathf.Sin(Time.time * fireballSpeed[i]) * fireballDistance, 0);
         }
 
         //当boss半血以下时,绕身的火球加速,boss移速增加,追逐范围/距离增加
@@ -47,5 +47,14 @@ public class Boss0 : Enemy
 
             spriteRenderer.color = Color.red;
         }
+    }
+
+    //该Boss死亡即被销毁,无需重生
+    protected override void Death()
+    {
+        GameManager.instance.GrantXP(xpValue);
+        GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
+
+        Destroy(gameObject);
     }
 }

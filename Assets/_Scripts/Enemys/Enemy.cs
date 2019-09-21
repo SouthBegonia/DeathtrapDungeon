@@ -112,7 +112,12 @@ public class Enemy : Mover
 
     //Enemy死亡函数
     protected override void Death()
-    {
+    { 
+        //玩家获得经验,显示+xp的UI
+        GameManager.instance.GrantXP(xpValue);
+        GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
+        
+        
         //取消旧版死亡销毁机制
         //Destroy(gameObject);
 
@@ -121,16 +126,12 @@ public class Enemy : Mover
         hitBox.enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        StartCoroutine("WaitingForRespawn");
-               
-        //玩家获得经验,显示+xp的UI
-        GameManager.instance.GrantXP(xpValue);
-        GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
+        StartCoroutine("WaitingForRespawn");             
     }
 
     IEnumerator WaitingForRespawn()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(timeToRespawn);
         isAlive = true;
         hitBox.enabled = true;
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
