@@ -11,14 +11,14 @@ public class GameManager : MonoBehaviour
     //资源:
     public List<Sprite> playerSprites;              //玩家Sprite
     public List<Sprite> weaponSprites;              //武器Sprite
-    public AudioSource audioSource;
     public bool _____________________;
 
     //游戏数值:
     public int pesos;                               //金币
     public int experience;                          //经验
+
     public List<int> weaponPrices;                  //武器价格表
-    public List<int> xpTable;                       //升级经验表
+    public List<int> xpTable;                       //升级经验表    
     public bool ______________________;
 
     //各类引用:
@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
     public CharacterHUD hud;                        //生命值经验值菜单(左上角)
     public Animator deathMenuAnim;                  //死亡界面动画
     public FloatingTextManager FloatingTextManager; //文本显示
-
 
 
     private void Awake()
@@ -60,6 +59,13 @@ public class GameManager : MonoBehaviour
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
     {
         FloatingTextManager.Show(msg, fontSize, color, position, motion, duration);
+    }
+
+    //更新各UI信息函数:
+    public void OnUIChange()
+    {
+        menu.UpdateMenu();
+        hud.UpdateHUD();
     }
 
     //判断武器是否能够升级函数:
@@ -109,7 +115,8 @@ public class GameManager : MonoBehaviour
         int currentLevel = GetCurrentLevel();
         experience += xp;
 
-        menu.UpdateMenu();
+        //获得经验时更新两组UI
+        OnUIChange();
 
         if (currentLevel < GetCurrentLevel())
         {
@@ -120,15 +127,8 @@ public class GameManager : MonoBehaviour
     {
         ShowText("LEVEL UP!", 30, Color.yellow, player.transform.position, Vector3.up * 30, 2.0f);
 
-        OnHitpointChange();
+        OnUIChange();
         player.OnLevelUp();
-    }
-
-    //更新生命值UI信息函数:
-    public void OnHitpointChange()
-    {
-        menu.UpdateMenu();
-        hud.UpdateHUD();
     }
 
     //复活函数:
@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour
     public void SaveState()
     {
         Debug.Log("SaveState");
-
+        
         //游戏数值载体s
         string s = "";
 
@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour
         s += "0" + "|";                     //data[0]
         s += pesos.ToString() + "|";        //data[1] 金币
         s += experience.ToString() + "|";   //data[2] 经验值
-        s += weapon.weaponLevel.ToString(); //data[3] 武器等级
+        s += weapon.weaponLevel.ToString() + "|"; //data[3] 武器等级
 
         //存储游戏信息字符串
         PlayerPrefs.SetString("SaveState", s);      
@@ -185,8 +185,10 @@ public class GameManager : MonoBehaviour
 
         //加载武器
         weapon.SetWeaponLevel(int.Parse(data[3]));
-              
+
         //设置场景出生地
         player.transform.position = GameObject.Find("SpawnPoint").transform.position;
+
+        OnUIChange();
     }
 }

@@ -15,16 +15,19 @@ public class HealingFountain : Colliderable
         //此处易出现bug:
         //贴墙的泉水与tilemap中的Collision图层的砖块进行碰撞,进而检测失误
         //解决方案:再添加Collision碰撞判定
-        if (coll.name != "Player" && !GameManager.instance.player.isAlive || coll.name=="Collision")
-            return;
-
-        if (Time.time - lastHeal > healCoolDown && healingTotal > 0)
+        if (coll.name == "Player" && GameManager.instance.player.isAlive)
         {
-            Debug.Log(coll.name);
-            lastHeal = Time.time;
-            healingTotal--;
+            //Debug.Log("HealingFountain.coll = " + coll.name);
+            if (Time.time - lastHeal > healCoolDown && healingTotal > 0)
+            {
+                Debug.Log(coll.name);
+                lastHeal = Time.time;
+                healingTotal--;
 
-            GameManager.instance.player.Heal(healingAmount);
+                GameManager.instance.player.Heal(healingAmount);
+            }
         }
+        else
+            return;
     }
 }

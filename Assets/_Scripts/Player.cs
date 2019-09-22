@@ -6,6 +6,9 @@ public class Player : Mover
 {
     private SpriteRenderer spriteRenderer;      //玩家当前Sprite
     public bool isAlive = true;                 //玩家是否存活
+    public float rage = 0;                      //怒气
+    public float maxRage = 50;                  //怒气最值
+
 
     protected override void Start()
     {
@@ -13,7 +16,7 @@ public class Player : Mover
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         ImmuneTime = 0.75f;
-        Player.DontDestroyOnLoad(gameObject);
+        Player.DontDestroyOnLoad(gameObject);      
     }
 
     private void FixedUpdate()
@@ -28,35 +31,69 @@ public class Player : Mover
         }
     }
 
-    //替换Sprite函数:
+    //Sprite变换函数:
     public void SwapSprite(int SkinID)
     {
         GetComponent<SpriteRenderer>().sprite = GameManager.instance.playerSprites[SkinID];
     }
 
-    //Player受伤函数: 减血,刷新生命值UI
-    protected override void ReceiveDamage(Damag dmg)
-    {
-        if (!isAlive)
-            return;
-
-        base.ReceiveDamage(dmg);
-        GameManager.instance.OnHitpointChange();
-    }
-
-    //Player的升级效果函数:提高生命值上限,恢复当前生命值
+    //等级提升函数:提高生命值上限,且恢复当前生命值
     public void OnLevelUp()
     {
         maxHitPoint += 10;
         hitPoint = maxHitPoint;
 
-        GameManager.instance.OnHitpointChange();
-      
+        GameManager.instance.OnUIChange();
+
     }
+    
+    //设置等级函数(仅供GameManger内调用)
     public void SetLevel(int level)
     {
         for (int i = 0; i < level; i++)
             OnLevelUp();
+    }
+
+    //Player受伤函数: 减血,怒气值增加,刷新生命值UI
+    protected override void ReceiveDamage(Damag dmg)
+    {
+        if (!isAlive)
+            return;
+
+        //如果不在免疫时间内,则会被造成伤害
+        if (Time.time - lastImmune > ImmuneTime)
+        {
+            lastImmune = Time.time;
+            hitPoint -= dmg.damageAmount;
+            pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
+
+            //怒气值系统:
+            //如果正在释放技能中,则无法积累怒气
+            if (!GameManager.instance.weapon.raging)
+                OnRageChange(dmg.damageAmount); 
+        }
+
+        if (hitPoint <= 0)
+        {
+            hitPoint = 0;
+            Death();
+        }
+
+        GameManager.instance.OnUIChange();
+    }
+    
+    //怒气积累系统:
+    public void OnRageChange(float alter)
+    {
+        if (rage < maxRage)
+            rage += alter;
+        if (rage >= maxRage)
+            rage = maxRage;
+        
+        if(rage==maxRage)
+            GameManager.instance.weapon.CanRageSkill = true;
+
+        //GameManager.instance.OnUIChange();
     }
 
     //恢复生命值函数: 生命值恢复,显示恢复数值UI及刷新生命值UI
@@ -70,7 +107,7 @@ public class Player : Mover
             hitPoint = maxHitPoint;
 
         GameManager.instance.ShowText("+" + healingAmount.ToString() + "hp", 25, Color.green, transform.position, Vector3.up * 30, 1.0f);
-        GameManager.instance.OnHitpointChange();
+        GameManager.instance.OnUIChange();
     }
 
     //Player死亡函数:
@@ -80,8 +117,9 @@ public class Player : Mover
         isAlive = false;
         transform.localEulerAngles = new Vector3(0, 0, 90);
 
-        //死亡惩罚:当前所持金币清零
+        //死亡惩罚:
         GameManager.instance.pesos = 0;
+        rage = 0;
         GameManager.instance.SaveState();
 
         //显示死亡面板
@@ -89,7 +127,7 @@ public class Player : Mover
         GameManager.instance.deathMenuAnim.SetTrigger("Show");
 
         //等待一定时间后复活并重新开始
-        StartCoroutine("WaitingForRespawn");      
+        StartCoroutine("WaitingForRespawn");
     }
 
     //Player复活函数:
@@ -98,7 +136,7 @@ public class Player : Mover
         //配置复活时的参数
         Heal(maxHitPoint);
         isAlive = true;
-        transform.localEulerAngles = Vector3.zero;       
+        transform.localEulerAngles = Vector3.zero;
     }
 
     IEnumerator WaitingForRespawn()

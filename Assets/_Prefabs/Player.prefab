@@ -135,7 +135,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  damagePoint: 01000000020000000400000006000000090000000c0000000f000000
+  damagePoint: 01000000020000000400000006000000090000000c00000010000000
   pushForce:
   - 2
   - 2.2
@@ -145,6 +145,9 @@ MonoBehaviour:
   - 3.6
   - 4
   weaponLevel: 0
+  flamingSword: {fileID: 9010854077145415047, guid: 20db0104af6f590469a14ba547deecf3,
+    type: 3}
+  skill: 0
 --- !u!95 &4568980633126897833
 Animator:
   serializedVersion: 3

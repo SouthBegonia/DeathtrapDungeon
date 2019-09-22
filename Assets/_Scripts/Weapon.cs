@@ -16,9 +16,13 @@ public class Weapon : Colliderable
 
     //武器控制参数:
     private Animator animator;              //动画组件
-    private float coolDown = 0.5f;          //武器攻击冷却时间
+    private float swingCoolDown = 0.5f;          //武器攻击冷却时间
     private float lastSwing;
-    public bool skill = true;
+
+    //武器技能参数:
+    public bool CanRageSkill = false;          //是否可以放技能
+    public bool raging = false;             //是否在放技能中
+    public float ragingTime = 4f;       //技能持续时间
 
     private void Awake()
     {
@@ -41,20 +45,34 @@ public class Weapon : Colliderable
         base.Update();
 
         //读取输入:空格键/鼠标左键实现普攻
-        if ((Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space)) && GameManager.instance.player.isAlive)
+        if (GameManager.instance.player.isAlive)
         {
-            if (Time.time - lastSwing > coolDown)
+            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
             {
-                lastSwing = Time.time;
+                if (Time.time - lastSwing > swingCoolDown)
+                {
+                    lastSwing = Time.time;
 
-                //武器劈砍动作               
-                Swing();
+                    //武器劈砍动作               
+                    Swing();
 
-                //释放技能
-                if (skill)
-                    CreateFlamingSword();
+                    //释放技能
+                    if (raging)
+                        CreateFlamingSword();
+                }
+            }
+
+            //当满足释放技能条件,且不在技能释放过程中
+            if(Input.GetKeyDown(KeyCode.R) && (!raging))
+            {
+                if (CanRageSkill)
+                {
+                    raging = true;
+                    StartCoroutine("WaitingForRestRageSkill");
+                }
             }
         }
+
     }
 
     //武器碰撞造成伤害函数:
@@ -79,7 +97,7 @@ public class Weapon : Colliderable
 
             //发送消息给被碰撞物体,调用其接受伤害函数(Fighter类内)
             coll.SendMessage("ReceiveDamage", dmg);
-        } 
+        }
     }
 
     //设置Animator状态函数:武器挥动swing
@@ -91,7 +109,7 @@ public class Weapon : Colliderable
         //2. 且武器劈砍至水平的时间建议在前半时间内完成,因为涉及武器的碰撞伤害:
         //   水平下的武器碰撞器范围较长,利于和敌人保持距离,并造成伤害
         //
-        //后续:补充
+        //后续补充:
         //3. 最好模拟真实情况下的劈砍动作,我将其分为以下几部分:
         //   p1:武器抬起并后仰.此过程速度适中
         //   p2:从90'到0'进行主劈砍动作.此过程前半速度快,后半速度极快
@@ -107,7 +125,6 @@ public class Weapon : Colliderable
         GameObject go = Instantiate(flamingSword);
     }
 
-
     //升级武器
     public void UpgradeWeapon()
     {
@@ -120,6 +137,15 @@ public class Weapon : Colliderable
     public void SetWeaponLevel(int level)
     {
         weaponLevel = level;
-        SpriteRenderer.sprite = GameManager.instance.weaponSprites[weaponLevel];      
+        SpriteRenderer.sprite = GameManager.instance.weaponSprites[weaponLevel];
+    }
+
+    IEnumerator WaitingForRestRageSkill()
+    {
+        yield return new WaitForSeconds(ragingTime);
+        raging = false;
+        CanRageSkill = false;
+        GameManager.instance.player.rage = 0;
+        GameManager.instance.OnUIChange();
     }
 }

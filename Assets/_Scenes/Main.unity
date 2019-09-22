@@ -10186,8 +10186,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  sceneNames:
-  - Dungeon_1
+  sceneName: Dungeon_1
 --- !u!61 &71078584
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10275,7 +10274,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &190705604
 GameObject:
@@ -10320,12 +10319,11 @@ MonoBehaviour:
   - {fileID: 21300076, guid: bf00711bd0d0f9a42b4be7ce6a4e6b10, type: 3}
   - {fileID: 21300078, guid: bf00711bd0d0f9a42b4be7ce6a4e6b10, type: 3}
   - {fileID: 21300080, guid: bf00711bd0d0f9a42b4be7ce6a4e6b10, type: 3}
-  audioSource: {fileID: 0}
   _____________________: 0
   pesos: 0
   experience: 0
-  weaponPrices: 0a0000001e0000003c00000078000000c80000002c010000
-  xpTable: 050000000a000000140000002300000037000000500000006e00000091000000b9000000
+  weaponPrices: 0a0000003200000064000000b40000002c010000f4010000
+  xpTable: 0a0000001e0000003c0000006400000096000000d20000001801000068010000c2010000
   ______________________: 0
   player: {fileID: 1113856612}
   weapon: {fileID: 261136920}
@@ -10442,6 +10440,7 @@ RectTransform:
   m_Children:
   - {fileID: 284686472}
   - {fileID: 383280383}
+  - {fileID: 1668707140}
   - {fileID: 216009075}
   - {fileID: 272762042}
   m_Father: {fileID: 0}
@@ -10466,6 +10465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1060831645}
   xpBar: {fileID: 1869017279}
+  rageBar: {fileID: 1258265323}
   level: {fileID: 27032578}
 --- !u!1 &216009074
 GameObject:
@@ -10498,7 +10498,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 209752923}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11016,7 +11016,7 @@ RectTransform:
   m_Children:
   - {fileID: 1329598207}
   m_Father: {fileID: 209752923}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -11414,7 +11414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 40.8, y: -46.9}
+  m_AnchoredPosition: {x: 40.8, y: -46.3}
   m_SizeDelta: {x: 210.4, y: 7.15}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &383280384
@@ -12803,6 +12803,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167904252}
   m_CullTransparentMesh: 0
+--- !u!1 &1258265322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1258265323}
+  - component: {fileID: 1258265325}
+  - component: {fileID: 1258265324}
+  m_Layer: 5
+  m_Name: RageBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1258265323
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258265322}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1668707140}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0.000011444092, y: -3.58}
+  m_SizeDelta: {x: 210.4, y: 7.15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1258265324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258265322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.67876744, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1258265325
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258265322}
+  m_CullTransparentMesh: 0
 --- !u!1 &1261985731
 GameObject:
   m_ObjectHideFlags: 0
@@ -14141,6 +14215,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593500829}
+  m_CullTransparentMesh: 0
+--- !u!1 &1668707139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1668707140}
+  - component: {fileID: 1668707142}
+  - component: {fileID: 1668707141}
+  m_Layer: 5
+  m_Name: Rage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1668707140
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668707139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1258265323}
+  m_Father: {fileID: 209752923}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 40.8, y: -54.2}
+  m_SizeDelta: {x: 210.4, y: 7.15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1668707141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668707139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.92156863}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1668707142
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668707139}
   m_CullTransparentMesh: 0
 --- !u!1 &1696650813
 GameObject:
@@ -16604,7 +16753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23381785, g: 0.769, b: 0, a: 1}
+  m_Color: {r: 0.15294118, g: 0.69803923, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -16850,7 +16999,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2068729425
 BoxCollider2D:
@@ -16909,7 +17058,6 @@ MonoBehaviour:
   - and let the feast begin
   showTime: 4
   coolDown: 5
-  ______________: 0
   canLookAtPlayer: 0
 --- !u!95 &2068729427
 Animator:
@@ -17059,7 +17207,7 @@ PrefabInstance:
     - target: {fileID: 1406237468530330111, guid: 67109ad2238902346a8d2627176acc95,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1406237468530330111, guid: 67109ad2238902346a8d2627176acc95,
         type: 3}
@@ -17138,7 +17286,7 @@ PrefabInstance:
     - target: {fileID: 7302910693859339690, guid: 9e5c4f4a52c5ebd4a9c1237ae6f318cb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7302910693859339690, guid: 9e5c4f4a52c5ebd4a9c1237ae6f318cb,
         type: 3}
@@ -17176,24 +17324,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4568980633126897832, guid: ce8ac46d1dba90343a730eca3dfaa773,
         type: 3}
-      propertyPath: flamingSword
-      value: 
-      objectReference: {fileID: 9010854077145415047, guid: 20db0104af6f590469a14ba547deecf3,
-        type: 3}
-    - target: {fileID: 4568980633126897832, guid: ce8ac46d1dba90343a730eca3dfaa773,
-        type: 3}
-      propertyPath: skill
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4568980634262810836, guid: ce8ac46d1dba90343a730eca3dfaa773,
-        type: 3}
-      propertyPath: hitPoint
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4568980634262810836, guid: ce8ac46d1dba90343a730eca3dfaa773,
-        type: 3}
-      propertyPath: maxHitPoint
-      value: 10
+      propertyPath: ragingTime
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4568980634262810832, guid: ce8ac46d1dba90343a730eca3dfaa773,
         type: 3}
@@ -17318,7 +17450,7 @@ PrefabInstance:
     - target: {fileID: 8400066305317241435, guid: 8140980b5e70e7247a4d5df71b3259f9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8400066305317241435, guid: 8140980b5e70e7247a4d5df71b3259f9,
         type: 3}
@@ -17338,12 +17470,12 @@ PrefabInstance:
     - target: {fileID: 8400066305317241434, guid: 8140980b5e70e7247a4d5df71b3259f9,
         type: 3}
       propertyPath: hitPoint
-      value: 2
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8400066305317241434, guid: 8140980b5e70e7247a4d5df71b3259f9,
         type: 3}
       propertyPath: maxHitPoint
-      value: 2
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8400066305317241434, guid: 8140980b5e70e7247a4d5df71b3259f9,
         type: 3}
