@@ -11,7 +11,6 @@ public class NPCTextPerson : Colliderable
     public float coolDown = 4.0f;       //显示信息的间隔
     private float lastShout;
 
-    public bool ______________;
 
     public bool canLookAtPlayer = false;//是否启用始终面朝玩家功能(毕竟不是所有NPC都喜欢转来转去
     private float posDelta;             //玩家与NPC的距离差(仅用x轴的)
@@ -49,7 +48,7 @@ public class NPCTextPerson : Colliderable
         if (Time.time - lastShout > coolDown)
         {
             lastShout = Time.time;
-            GameManager.instance.ShowText(messages[msgNow++], 30, Color.white, transform.position + new Vector3(0, 0.16f, 0), Vector3.zero, showTime);
+            GameManager.instance.ShowText(messages[msgNow++], 30, Color.white, transform.position + new Vector3(0, 0.18f, 0), Vector3.zero, showTime);
 
             if (msgNow == messages.Length)
                 msgNow = 0;

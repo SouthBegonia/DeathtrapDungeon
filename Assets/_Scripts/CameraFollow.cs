@@ -2,7 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//相机跟随脚本:
+//相机跟随脚本:挂在于相机1
+/* 相机1: MainCamera,设定为display1
+ *   - 实现效果:脚本控制相机跟随范围,但是较为僵硬
+ * 
+ * 
+ * 相机2: Player下的CM vcam1虚拟相机,设定为display2
+ *   - 实现效果:相机动态跟随效果好
+ *   ------------------------------------
+ *   - 出现问题1:移动时画面出现可见的白色竖线
+ *   - 问题分析:
+ *   - 解决方案:修改美术资源的pixels per unit为99
+ *   ------------------------------------
+ *   - 出现问题2:当Player死亡重生后相机方向为-90
+ *   - 问题分析:Player死亡时倒地,其rotation.z=-90,导致跟随的虚拟相机也偏移
+ *   - 解决方案:将虚拟相机归于GameManger物体下
+ */
+
 public class CameraFollow : MonoBehaviour
 {
     private Transform lookAt;           //相机跟随的目标(Player)

@@ -11,7 +11,6 @@ public class Player : Mover
     {
         base.Start();
 
-        //初始化参数及其组件
         spriteRenderer = GetComponent<SpriteRenderer>();
         ImmuneTime = 0.75f;
         Player.DontDestroyOnLoad(gameObject);
@@ -27,26 +26,6 @@ public class Player : Mover
 
             UpdateMotor(new Vector3(x, y, 0), 1);
         }
-
-        //迁移至Mover类内通过UpdateMotor()实现下列代码
-        //moveDelta = new Vector3(x, y, 0);
-
-        ////变更方向:正向/逆向
-        //if (moveDelta.x > 0)
-        //    transform.localScale = new Vector3(1, 1, 1);
-        //else if (moveDelta.x < 0)
-        //    transform.localScale = new Vector3(-1, 1, 1);
-
-        ////定向移动:上下左右
-        ////当物件处在Blocking层且包含BoxCollider2D时,不可越(wall)
-        //hit = Physics2D.BoxCast(transform.position, PlayerCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
-        //if (hit.collider == null)
-        //    transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
-        ////Debug.Log("Y :" + hit);
-        //hit = Physics2D.BoxCast(transform.position, PlayerCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
-        //if (hit.collider == null)
-        //    transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
-        ////Debug.Log("X :" + hit);
     }
 
     //替换Sprite函数:
@@ -55,15 +34,13 @@ public class Player : Mover
         GetComponent<SpriteRenderer>().sprite = GameManager.instance.playerSprites[SkinID];
     }
 
-    //Player受伤函数:
+    //Player受伤函数: 减血,刷新生命值UI
     protected override void ReceiveDamage(Damag dmg)
     {
         if (!isAlive)
             return;
-        //造成伤害
-        base.ReceiveDamage(dmg);
 
-        //更新UI
+        base.ReceiveDamage(dmg);
         GameManager.instance.OnHitpointChange();
     }
 
@@ -82,7 +59,7 @@ public class Player : Mover
             OnLevelUp();
     }
 
-    //恢复生命值函数:
+    //恢复生命值函数: 生命值恢复,显示恢复数值UI及刷新生命值UI
     public void Heal(int healingAmount)
     {
         if (hitPoint == maxHitPoint)
@@ -92,7 +69,6 @@ public class Player : Mover
         if (hitPoint > maxHitPoint)
             hitPoint = maxHitPoint;
 
-        //更新UI
         GameManager.instance.ShowText("+" + healingAmount.ToString() + "hp", 25, Color.green, transform.position, Vector3.up * 30, 1.0f);
         GameManager.instance.OnHitpointChange();
     }
@@ -109,6 +85,7 @@ public class Player : Mover
         GameManager.instance.SaveState();
 
         //显示死亡面板
+        GameManager.instance.deathMenuAnim.gameObject.SetActive(true);
         GameManager.instance.deathMenuAnim.SetTrigger("Show");
 
         //等待一定时间后复活并重新开始
@@ -130,5 +107,6 @@ public class Player : Mover
         GameManager.instance.Respawn();
         GameManager.instance.menu.UpdateMenu();
         GameManager.instance.hud.UpdateHUD();
+        GameManager.instance.deathMenuAnim.gameObject.SetActive(false);
     }
 }
