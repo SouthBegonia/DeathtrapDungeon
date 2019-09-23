@@ -8,7 +8,7 @@ public class Player : Mover
     public bool isAlive = true;                 //玩家是否存活
     public float rage = 0;                      //怒气
     public float maxRage = 50;                  //怒气最值
-
+    //private Vector3 moveTo = new Vector3(0, 0, 0);
 
     protected override void Start()
     {
@@ -16,7 +16,8 @@ public class Player : Mover
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         ImmuneTime = 0.75f;
-        Player.DontDestroyOnLoad(gameObject);      
+        Player.DontDestroyOnLoad(gameObject);    
+        
     }
 
     private void FixedUpdate()
@@ -28,6 +29,11 @@ public class Player : Mover
             float y = Input.GetAxisRaw("Vertical");
 
             UpdateMotor(new Vector3(x, y, 0), 1);
+
+            //注:若是用以下方法读取输入,会使得FixedUpdate内的GCAlloc增加数倍
+            //moveTo.x = Input.GetAxisRaw("Horizontal");
+            //moveTo.y = Input.GetAxisRaw("Vertical");
+            //UpdateMotor(moveTo, 1);
         }
     }
 

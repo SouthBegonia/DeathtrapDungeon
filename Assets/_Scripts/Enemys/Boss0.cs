@@ -35,8 +35,8 @@ public class Boss0 : Enemy
             fireballs[i].position = transform.position + new Vector3(-Mathf.Cos(Time.time * fireballSpeed[i]) * fireballDistance, Mathf.Sin(Time.time * fireballSpeed[i]) * fireballDistance, 0);
         }
 
-        //当boss半血以下时,绕身的火球加速,boss移速增加,追逐范围/距离增加
-        if (((float)hitPoint / (float)maxHitPoint) <= 0.5f)
+        //当boss残血时,绕身的火球加速,boss移速增加,追逐范围/距离增加
+        if (((float)hitPoint / (float)maxHitPoint) <= 0.2f)
         {
             fireballSpeed[0] = 4f;
             fireballSpeed[1] = -4f;

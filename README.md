@@ -28,7 +28,7 @@ Scene - Dungeon_1:
 Tile Map:
 ![](https://img2018.cnblogs.com/blog/1688704/201909/1688704-20190922222235251-738700886.png)
 
-Protect:
+project:
 ![](https://img2018.cnblogs.com/blog/1688704/201909/1688704-20190922222244887-705043860.png)
 
 

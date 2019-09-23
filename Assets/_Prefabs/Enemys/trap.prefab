@@ -154,6 +154,6 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  damage: 1
+  damage: 5
   pushForce: 2
   lateToStart: 1

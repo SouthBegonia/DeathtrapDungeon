@@ -12,17 +12,19 @@ public class Weapon : Colliderable
     //武器等级参数:
     public int weaponLevel = 0;             //当前武器等级
     private SpriteRenderer SpriteRenderer;  //当前武器的Spite
-    public GameObject flamingSword;
+    public GameObject flamingSword;         //光刃
 
     //武器控制参数:
     private Animator animator;              //动画组件
-    private float swingCoolDown = 0.5f;          //武器攻击冷却时间
+    private float swingCoolDown = 0.5f;     //武器攻击冷却时间
     private float lastSwing;
 
-    //武器技能参数:
-    public bool CanRageSkill = false;          //是否可以放技能
+    //Rage技能参数:
+    //- Rage技能效果:普攻发出光刃,对敌人造成远程伤害
+    //- Rage技能释放要求:在Player内收到伤害积累怒气rage,怒气满值即可释放
+    public bool CanRageSkill = false;       //是否可以放技能
     public bool raging = false;             //是否在放技能中
-    public float ragingTime = 4f;       //技能持续时间
+    public float ragingTime = 4f;           //技能持续时间
 
     private void Awake()
     {
