@@ -21,6 +21,7 @@ public class HealingFountain : Colliderable
             if (Time.time - lastHeal > healCoolDown && healingTotal > 0)
             {
                 Debug.Log(coll.name);
+                
                 lastHeal = Time.time;
                 healingTotal--;
 

@@ -3,7 +3,14 @@ guid: 6930c6e5979eaed43950765b9ae7e606
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {fileID: 4568980634262810836, guid: ce8ac46d1dba90343a730eca3dfaa773,
+      type: 3}
+  - weapon: {instanceID: 0}
+  - menu: {instanceID: 0}
+  - hud: {instanceID: 0}
+  - deathMenuAnim: {instanceID: 0}
+  - FloatingTextManager: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

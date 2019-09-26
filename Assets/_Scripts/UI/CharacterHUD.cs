@@ -9,7 +9,7 @@ public class CharacterHUD : MonoBehaviour
     public RectTransform healthBar;     //生命条
     public RectTransform xpBar;         //经验条
     public RectTransform rageBar;       //怒气条
-    
+
     public Text level;                  //等级text
 
     private void Start()
@@ -45,6 +45,7 @@ public class CharacterHUD : MonoBehaviour
 
             float completionRatio = (float)currXpIntoLevel / (float)diff;
             xpBar.localScale = new Vector3(completionRatio, 1, 1);
+
         }
 
         //更新RageBar

@@ -147,7 +147,9 @@ MonoBehaviour:
   weaponLevel: 0
   flamingSword: {fileID: 9010854077145415047, guid: 20db0104af6f590469a14ba547deecf3,
     type: 3}
-  skill: 0
+  CanRageSkill: 0
+  raging: 0
+  ragingTime: 4
 --- !u!95 &4568980633126897833
 Animator:
   serializedVersion: 3
@@ -263,10 +265,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bcfcbded3c2bc46a40a139c159f2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoint: 10
-  maxHitPoint: 10
+  hitPoint: 100
+  maxHitPoint: 100
   pushRecoverySpeed: 0.2
   isAlive: 1
+  rage: 0
+  maxRage: 50
 --- !u!61 &4568980634262810835
 BoxCollider2D:
   m_ObjectHideFlags: 0

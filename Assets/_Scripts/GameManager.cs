@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public Animator deathMenuAnim;                  //死亡界面动画
     public FloatingTextManager FloatingTextManager; //文本显示
 
-
+    
     private void Awake()
     {
         //防止部分不销毁物体重复在场景重载后重复
@@ -42,7 +42,8 @@ public class GameManager : MonoBehaviour
             Destroy(hud.gameObject);
             return;
         }
-
+        
+        
         instance = this;
 
         //加载存档
