@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //泉水恢复生命值脚本
+/* 
+ *  备注：由于采用了AnimatedTile实现healingwater效果，所以需要关闭healingwater上的animator组件，否则出现重叠
+ */
 public class HealingFountain : Colliderable
 {
     public int healingAmount = 1;       //每次治疗量

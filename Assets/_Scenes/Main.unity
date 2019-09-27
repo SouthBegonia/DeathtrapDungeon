@@ -12022,7 +12022,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.468, z: -10}
+  m_LocalPosition: {x: 0, y: -0.468, z: -1.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13997,7 +13997,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 6.8757744
+      m_AnimationSpeed: 5.8962317
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 1, y: 5, z: 0}
@@ -14006,7 +14006,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 8.108504
+      m_AnimationSpeed: 6.1393595
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -17475,8 +17475,11 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   messages:
-  - Fear not the dark my friend,
-  - and let the feast begin
+  - 'Some people abandoned, '
+  - some died..
+  - Dare you, to go in there?
+  - Running, can save your life..
+  - Are you still alive?
   showTime: 4
   coolDown: 5
   canLookAtPlayer: 0

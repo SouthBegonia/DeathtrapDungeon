@@ -4409,7 +4409,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 8.987747
+      m_AnimationSpeed: 8.693142
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -51, y: 7, z: 0}
@@ -4418,7 +4418,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 9.351935
+      m_AnimationSpeed: 7.8366013
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -50, y: 7, z: 0}
@@ -4427,7 +4427,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 5.9056587
+      m_AnimationSpeed: 8.237648
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -49, y: 7, z: 0}
@@ -4436,7 +4436,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 5.021127
+      m_AnimationSpeed: 6.6353035
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -51173,7 +51173,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863731645395403283}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.336, y: 0.21663982, z: 0}
+  m_LocalPosition: {x: -0.169, y: 0.782, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 1863731645868852905}
@@ -51188,7 +51188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863731645697309452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.336, y: -0.3703602, z: 0}
+  m_LocalPosition: {x: -0.16899967, y: -0.87, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 1863731645097017270}
@@ -51805,7 +51805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3472921417211372024}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.834, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 3472921415895728106}
@@ -51834,8 +51834,8 @@ MonoBehaviour:
   timeToRespawn: 0
   _________: 0
   speedMultiple: 0.5
-  triggerLength: 2
-  chaseLength: 2
+  triggerLength: 1.5
+  chaseLength: 3
   chasing: 0
   collidingWithPlayer: 0
   filter:

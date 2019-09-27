@@ -192,4 +192,14 @@ public class GameManager : MonoBehaviour
 
         OnUIChange();
     }
+
+    //当游戏退出时，清零所有数值
+    private void OnApplicationQuit()
+    {
+        pesos = 0;
+        experience = 0;
+        player.rage = 0;
+        weapon.weaponLevel = 0;
+        SaveState();
+    }
 }

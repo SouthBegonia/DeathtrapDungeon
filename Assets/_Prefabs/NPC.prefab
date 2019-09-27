@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6275248204159803967
+--- !u!1 &6296726382589185326
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6275248204159803964}
-  - component: {fileID: 6275248204159803965}
-  - component: {fileID: 6275248204159803966}
-  - component: {fileID: 6275248204159803962}
-  - component: {fileID: 6275248204159803963}
-  m_Layer: 8
-  m_Name: healing_water
+  - component: {fileID: 6296726382589185328}
+  - component: {fileID: 6296726382589185327}
+  - component: {fileID: 6296726382589185329}
+  - component: {fileID: 6296726382589185330}
+  m_Layer: 9
+  m_Name: NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6275248204159803964
+--- !u!4 &6296726382589185328
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6275248204159803967}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.32779694, y: -0.28221494, z: 0.2694336}
+  m_GameObject: {fileID: 6296726382589185326}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.404, y: -0.163, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6275248204159803965
+--- !u!212 &6296726382589185327
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6275248204159803967}
+  m_GameObject: {fileID: 6296726382589185326}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -69,76 +68,56 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1756946531
-  m_SortingLayer: 2
+  m_SortingLayerID: 1215660215
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5026381916736205260, guid: c320a1766d556334fa09a7e139213e06,
-    type: 3}
-  m_Color: {r: 0.94509804, g: 0.80784315, b: 0.9254902, a: 1}
+  m_Sprite: {fileID: 21300030, guid: bf00711bd0d0f9a42b4be7ce6a4e6b10, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16161616, y: 0.2020202}
+  m_Size: {x: 0.16161616, y: 0.16161616}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &6275248204159803966
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6275248204159803967}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 99fc8ccbab41ac04ead2ef1f9f69ba35, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &6275248204159803962
+--- !u!61 &6296726382589185329
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6275248204159803967}
+  m_GameObject: {fileID: 6296726382589185326}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0040572137, y: 0.01704073}
+  m_Offset: {x: -0.0017788261, y: 0.0015988946}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16161616, y: 0.2020202}
+    newSize: {x: 0.16161616, y: 0.16161616}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16973057, y: 0.271806}
+  m_Size: {x: 0.16990592, y: 0.16385394}
   m_EdgeRadius: 0
---- !u!114 &6275248204159803963
+--- !u!114 &6296726382589185330
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6275248204159803967}
+  m_GameObject: {fileID: 6296726382589185326}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2119680568ace444849ccd20c6bf226, type: 3}
+  m_Script: {fileID: 11500000, guid: a047178d20b5bcf4e9f1ad5fa15c83f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   filter:
@@ -155,5 +134,9 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  healingAmount: 1
-  healingTotal: 10
+  messages:
+  - Fear not the dark my friend,
+  - and let the feast begin
+  showTime: 4
+  coolDown: 5
+  canLookAtPlayer: 0
