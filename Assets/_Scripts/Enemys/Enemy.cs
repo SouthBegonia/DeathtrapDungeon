@@ -15,7 +15,7 @@ using UnityEngine;
 public class Enemy : Mover
 {
     public int xpValue = 1;                 //击杀获得经验值
-    private bool isAlive = true;             //Enenmy是否存活
+    private bool isAlive = true;            //Enenmy是否存活
     public bool canRespawn = true;          //Eneny是否可以复活
     public float timeToRespawn = 10f;       //多少秒后Enemy复活
     public bool _________;

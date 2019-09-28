@@ -13998,7 +13998,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 6.530148
+      m_AnimationSpeed: 6.194866
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 1, y: 5, z: 0}
@@ -14007,7 +14007,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 8.189997
+      m_AnimationSpeed: 9.402361
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -17825,12 +17825,12 @@ PrefabInstance:
     - target: {fileID: 4568980634262810836, guid: ce8ac46d1dba90343a730eca3dfaa773,
         type: 3}
       propertyPath: hitPoint
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4568980634262810836, guid: ce8ac46d1dba90343a730eca3dfaa773,
         type: 3}
       propertyPath: maxHitPoint
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4568980634262810832, guid: ce8ac46d1dba90343a730eca3dfaa773,
         type: 3}
@@ -17840,12 +17840,12 @@ PrefabInstance:
     - target: {fileID: 4568980634262810834, guid: ce8ac46d1dba90343a730eca3dfaa773,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.002
       objectReference: {fileID: 0}
     - target: {fileID: 4568980634262810834, guid: ce8ac46d1dba90343a730eca3dfaa773,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.468
+      value: -0.467
       objectReference: {fileID: 0}
     - target: {fileID: 4568980634262810834, guid: ce8ac46d1dba90343a730eca3dfaa773,
         type: 3}
