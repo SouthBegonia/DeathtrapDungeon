@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss0 : Enemy
 {
+    public bool ___________;
     public Transform[] fireballs;
     public float[] fireballSpeed = { 2.5f, -2.5f };
     private SpriteRenderer spriteRenderer;
@@ -49,12 +50,12 @@ public class Boss0 : Enemy
         }
     }
 
-    //该Boss死亡即被销毁,无需重生
-    protected override void Death()
-    {
-        GameManager.instance.GrantXP(xpValue);
-        GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
+    ////该Boss死亡即被销毁,无需重生
+    //protected override void Death()
+    //{
+    //    GameManager.instance.GrantXP(xpValue);
+    //    GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
 
-        Destroy(gameObject);
-    }
+    //    Destroy(gameObject);
+    //}
 }

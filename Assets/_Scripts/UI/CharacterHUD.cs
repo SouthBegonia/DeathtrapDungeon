@@ -9,6 +9,7 @@ public class CharacterHUD : MonoBehaviour
     public RectTransform healthBar;     //生命条
     public RectTransform xpBar;         //经验条
     public RectTransform rageBar;       //怒气条
+    public Image rImage;                //R标记
 
     public Text level;                  //等级text
 
@@ -50,5 +51,9 @@ public class CharacterHUD : MonoBehaviour
 
         //更新RageBar
         rageBar.localScale = new Vector3(GameManager.instance.player.rage / GameManager.instance.player.maxRage, 1, 1);
+        if (GameManager.instance.player.rage == GameManager.instance.player.maxRage)
+            rImage.gameObject.SetActive(true);
+        else
+            rImage.gameObject.SetActive(false);
     }
 }

@@ -56,6 +56,18 @@ TextureImporter:
   - first:
       213: 6314631127930079477
     second: healing_water_5
+  - first:
+      213: -1007621799875005872
+    second: Dragon_0
+  - first:
+      213: 7236858470366593164
+    second: Dragon_1
+  - first:
+      213: 5967068118830826598
+    second: Dragon_2
+  - first:
+      213: -6818290705752391711
+    second: Dragon_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -463,13 +475,13 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eaf0615ed47e11948912c9edf9fb9f38
+      spriteID: ecbb29cc5a0c06846afd6a3f0657b2c5
       internalID: -7224616341418251648
       vertices: []
       indices: 
@@ -484,13 +496,13 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 983c0fb729da18e4f82e36c6947ffe8b
+      spriteID: bd054cb921ff44140864ac865c9f9889
       internalID: 5668725160440815478
       vertices: []
       indices: 
@@ -505,14 +517,98 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6db04dadccb11341b1cb8b9223370a4
+      internalID: 6314631127930079477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon_0
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 16
+        height: 19
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce00eb453ba22c149bfb7d5145efbe4f
-      internalID: 6314631127930079477
+      spriteID: 582237c9e18e2284b8a667c3d7b85f10
+      internalID: -1007621799875005872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 256
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aebdd45e21eac84cb376d75112ae253
+      internalID: 7236858470366593164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon_2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 256
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3532f2004a907746b8990f67daad72b
+      internalID: 5967068118830826598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dragon_3
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 256
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b295abc1b66160f429721163fb1a42e2
+      internalID: -6818290705752391711
       vertices: []
       indices: 
       edges: []

@@ -15,7 +15,8 @@ using UnityEngine;
 public class Enemy : Mover
 {
     public int xpValue = 1;                 //击杀获得经验值
-    public bool isAlive = true;            //Enenmy是否存活
+    private bool isAlive = true;             //Enenmy是否存活
+    public bool canRespawn = true;          //Eneny是否可以复活
     public float timeToRespawn = 10f;       //多少秒后Enemy复活
     public bool _________;
 
@@ -116,17 +117,29 @@ public class Enemy : Mover
         //玩家获得经验,显示+xp的UI
         GameManager.instance.GrantXP(xpValue);
         GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
-        
-        
+
+
         //取消旧版死亡销毁机制
         //Destroy(gameObject);
 
         //新版死亡复活机制
-        isAlive = false;
-        hitBox.enabled = false;
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        StartCoroutine("WaitingForRespawn");             
+        //isAlive = false;
+        //hitBox.enabled = false;
+        //gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        //gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        //StartCoroutine("WaitingForRespawn");  
+
+        //再版：按需决定是否可以复活
+        if (canRespawn)
+        {
+            isAlive = false;
+            hitBox.enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            StartCoroutine("WaitingForRespawn");
+        }
+        else
+            Destroy(gameObject);
     }
 
     IEnumerator WaitingForRespawn()
