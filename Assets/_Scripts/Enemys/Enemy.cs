@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//敌人公用脚本:包括击杀获得经验值,追逐Player功能等
+//敌人基类:包括击杀获得经验值,追逐Player功能等
 /* 目前已有的功能:
  *  - 追逐玩家进行攻击伤害
  *  - 死亡一段时间后复活

@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public Weapon weapon;                           //武器
     public CharacterMenu menu;                      //装备菜单(左下角)
     public CharacterHUD hud;                        //生命值经验值菜单(左上角)
+    //public Portal SCUI;
     public Animator deathMenuAnim;                  //死亡界面动画
     public FloatingTextManager FloatingTextManager; //文本显示
 
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
             Destroy(FloatingTextManager.gameObject);
             Destroy(menu.gameObject);
             Destroy(hud.gameObject);
+            //Destroy(SCUI.gameObject);
             return;
         }
         
@@ -57,9 +59,9 @@ public class GameManager : MonoBehaviour
     }
 
     //通用显示Text信息函数:
-    public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
+    public void ShowText(string msg, int fontSize, Color color, Vector3 position,Vector3 motion, float duration)
     {
-        FloatingTextManager.Show(msg, fontSize, color, position, motion, duration);
+        FloatingTextManager.Show(msg, fontSize, color, position,motion, duration);
     }
 
     //更新各UI信息函数:

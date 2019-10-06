@@ -9,6 +9,7 @@ public class FloatingText
     public bool active;     //是否启用
     public GameObject go;   //文本对象(全部归于FloatingTextManager物体下)
     public Text text;       //文本信息
+    //public Vector3 targetPos;
     public Vector3 motion;  //文本移动方向
     public float duration;  //文本显示持续时间
     public float lastshown;
@@ -44,5 +45,8 @@ public class FloatingText
 
         //Text显示速度
         go.GetComponent<Transform>().position += motion * Time.deltaTime;
+        //go.GetComponent<Transform>().position = targetPos;
+        //Debug.Log(go.GetComponent<Transform>().position);
+        //Debug.Log(targetPos);
     }
 }

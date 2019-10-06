@@ -21,7 +21,7 @@ public class FloatingTextManager : MonoBehaviour
     }
 
     //配置Text信息的函数:
-    public void Show(string msg,int fontSize, Color color, Vector3 position,Vector3 motion,float duration)
+    public void Show(string msg,int fontSize, Color color, Vector3 position,Vector3 motion, float duration)
     {
         //取得Text
         FloatingText FloatingText = GetFloatingText();
@@ -31,10 +31,16 @@ public class FloatingTextManager : MonoBehaviour
         FloatingText.text.fontSize = fontSize;
         FloatingText.text.color = color;
 
+        //Debug.Log("NPC WorldPosition = " + position);
+        
         FloatingText.go.transform.position = Camera.main.WorldToScreenPoint(position);
-
+        //Debug.Log("NPC ScreenPosition = " + FloatingText.go.transform.position);
         FloatingText.motion = motion;
+        //持续时间
         FloatingText.duration = duration;
+
+        //位置
+        //FloatingText.targetPos = Camera.main.WorldToScreenPoint(position);
 
         //开启显示状态
         FloatingText.Show();
