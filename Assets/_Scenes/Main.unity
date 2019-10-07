@@ -11282,6 +11282,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284686471}
   m_CullTransparentMesh: 0
+--- !u!1 &287902906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4568980634262810832, guid: ce8ac46d1dba90343a730eca3dfaa773,
+    type: 3}
+  m_PrefabInstance: {fileID: 4568980633153153712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &287902907
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287902906}
+  m_Enabled: 1
 --- !u!1 &311272731
 GameObject:
   m_ObjectHideFlags: 0
@@ -12144,7 +12158,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
@@ -12153,14 +12166,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13185,7 +13190,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4568980633153153712}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 287902906}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91bcfcbded3c2bc46a40a139c159f2e9, type: 3}
@@ -14350,7 +14355,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 5.2251997
+      m_AnimationSpeed: 8.831776
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 1, y: 5, z: 0}
@@ -14359,7 +14364,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 8.809335
+      m_AnimationSpeed: 8.460774
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
