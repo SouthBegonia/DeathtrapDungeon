@@ -9,10 +9,14 @@ using UnityEngine;
  * 
  * 相机2: Player下的CM vcam1虚拟相机,设定为display2
  *   - 实现效果:相机动态跟随效果好
+ *   
  *   ------------------------------------
- *   - 出现问题1:移动时画面出现可见的白色竖线
- *   - 问题分析:
- *   - 解决方案:修改美术资源的pixels per unit为99
+ *   - 出现问题: 移动时画面出现可见的白色竖线，尤其出现在boss关卡(player多次碰撞情况)
+ *   - 问题分析: 出现的白线时SolidClear下的BackGround颜色，但出现这种问题有可能是Tilemap之间存在间隙
+ *   - 解决方案1: 修改美术资源的pixels per unit为99
+ *   - 方案效果1：没啥用，bug依旧
+ *   - 解决方案2：MainCamera中ClearFlags模式变更为DontClear而不是SolidClear
+ *   - 方案效果2：的确见不到白线了，但不太懂DontClear机理
  *   ------------------------------------
  *   - 出现问题2:当Player死亡重生后相机方向为-90
  *   - 问题分析:Player死亡时倒地,其rotation.z=-90,导致跟随的虚拟相机也偏移
@@ -57,6 +61,8 @@ public class CameraFollow : MonoBehaviour
                 delts.y = deltaY + boundY;
         }
 
+        //destination = Vector3.Lerp(transform.position, destination, easing);
+        
         //设定相机的最新位置
         transform.position += new Vector3(delts.x, delts.y, 0);
     }
