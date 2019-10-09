@@ -29,17 +29,20 @@ public class CameraFollow : MonoBehaviour
     public float boundX = 0.3f;         //X轴差值范围
     public float boundY = 0.15f;        //Y轴差值范围
 
+    private Vector3 delts = Vector3.zero;
+    private Vector3 destination;
+
     private void Start()
     {
         lookAt = GameObject.Find("Player").transform;
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         //移动的差值delts:
         //实现在一定范围内Player移动时相机不跟随,但是当超出一定范围时相机跟随移动
         //也就是说:根据相机与Player的间距值,判断是否跟随移动
-        Vector3 delts = Vector3.zero;
+        delts = Vector3.zero;
 
         //X轴的差值:若相机与Player间距超过范围值,则对差值delts赋值
         float deltaX = lookAt.position.x - transform.position.x;
@@ -61,9 +64,24 @@ public class CameraFollow : MonoBehaviour
                 delts.y = deltaY + boundY;
         }
 
-        //destination = Vector3.Lerp(transform.position, destination, easing);
-        
-        //设定相机的最新位置
-        transform.position += new Vector3(delts.x, delts.y, 0);
+        delts.z = 0f;
+
+        //新方法：差值平滑过渡
+        destination = Vector3.Lerp(transform.position, transform.position + delts, 0.2f);
+
+        /* 此处容易出现问题：camera渲染层次混乱
+        * 问题分析：下列代码应当设置为z<0，否则z=0就会与地图等元素处于同一平面，渲染顺序出错
+        * 解决：留意camera的渲染问题：transform.z<0 和 depth=-1
+        */
+        destination.z = -1f;
+
+
+        //旧方法：设定相机的最新位置，无差值平滑过渡
+        //transform.position += new Vector3(delts.x, delts.y, 0);
+    }
+
+    private void LateUpdate()
+    {
+        transform.position = destination;
     }
 }

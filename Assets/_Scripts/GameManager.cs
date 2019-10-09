@@ -35,16 +35,16 @@ public class GameManager : MonoBehaviour
         //防止部分不销毁物体重复在场景重载后重复
         if (GameManager.instance != null)
         {
-            Destroy(gameObject);
+            
             Destroy(player.gameObject);
+            Destroy(gameObject);
             Destroy(FloatingTextManager.gameObject);
             Destroy(menu.gameObject);
             Destroy(hud.gameObject);
 
             return;
         }
-        
-        
+               
         instance = this;
 
         //加载存档

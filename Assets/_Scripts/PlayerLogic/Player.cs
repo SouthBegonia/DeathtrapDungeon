@@ -13,10 +13,10 @@ public class Player : Mover
     protected override void Start()
     {
         base.Start();
-
+        GetComponent<BoxCollider2D>().enabled = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
         ImmuneTime = 0.75f;
-        Player.DontDestroyOnLoad(gameObject);    
+        Player.DontDestroyOnLoad(gameObject);
         
     }
 

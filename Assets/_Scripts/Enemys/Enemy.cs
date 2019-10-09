@@ -50,7 +50,6 @@ public class Enemy : Mover
         Debug.DrawLine(transform.position, new Vector3(transform.position.x - triggerLength, transform.position.y, transform.position.z), Color.green);
         Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y + triggerLength, transform.position.z), Color.green);
         Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - triggerLength, transform.position.z), Color.green);
-
     }
 
     private void FixedUpdate()
@@ -68,7 +67,7 @@ public class Enemy : Mover
                 continue;
 
             //如果检测到范围内存在Player
-            if(hits[i].tag=="Fighter" && hits[i].name == "Player")
+            if(hits[i].CompareTag("Fighter") && hits[i].name == "Player")
             {
                 collidingWithPlayer = true;
             }
@@ -80,8 +79,9 @@ public class Enemy : Mover
     //追逐玩家函数:
     protected virtual void ChasingTarget()
     {
+
         //若Player在Enemy原始坐标chaseLength范围内时,可能被追逐
-        if (Vector3.Distance(playTransform.position, startingPosition) < chaseLength)
+        if ((Vector3.Distance(playTransform.position, startingPosition) < chaseLength) && GameManager.instance.player.isAlive)
         {
             //再 若Player与Enemy范围过近(triggerLength内),则Enemy开始追逐
             if (Vector3.Distance(playTransform.position, startingPosition) < triggerLength)

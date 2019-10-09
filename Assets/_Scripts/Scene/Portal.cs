@@ -18,7 +18,7 @@ public class Portal : Colliderable
     private float target = 0;   //场景加载值
     private float dtimer = 0;
     AsyncOperation op = null;   //异步操作协同程序
-    
+
 
     protected override void Start()
     {
@@ -45,17 +45,7 @@ public class Portal : Colliderable
     protected override void Update()
     {
         base.Update();
-
-        SCUISlider.value = Mathf.Lerp(SCUISlider.value, target, dtimer * 0.01f);
-        dtimer += Time.deltaTime;
-
-        if (SCUISlider.value > 0.99f)
-        {
-            SCUISlider.value = 1;
-
-            //进度条完，开启场景显示
-            op.allowSceneActivation = true;
-        }
+        UpdateSlider();
     }
 
     public void ChangeScene()
@@ -65,30 +55,41 @@ public class Portal : Colliderable
         GetComponent<BoxCollider2D>().enabled = false;
         SCUISlider.value = 0;
 
-        //设置异步加载的场景
-        op = SceneManager.LoadSceneAsync(sceneNames);
-        op.allowSceneActivation = false;
-        
         //开启异步加载协程
         StartCoroutine(processLoading());
     }
- 
+
+    private void UpdateSlider()
+    {
+        if (op != null)
+        {
+            if (op.progress >= 0.9f)
+            {
+                target = 1;
+            }
+            else
+                target = op.progress;
+
+            if (SCUISlider.value > 0.99)
+            {
+                SCUISlider.value = 1;
+                op.allowSceneActivation = true;
+                return;
+            }
+            else
+            {
+                SCUISlider.value = Mathf.Lerp(SCUISlider.value, target, dtimer * 0.05f);
+                dtimer += Time.deltaTime;
+            }
+        }
+    }
 
     IEnumerator processLoading()
     {
-        while (true)
-        {
-            //取得当前操作进度(float型)
-            target = op.progress;
-
-            if (target >= 0.9f)
-            {
-                //加载进度完毕，跳出协程
-                target = 1;
-                yield break;
-            }
-            //等待下一帧执行
-            yield return 0;
-        }
+        //设置异步加载的场景
+        op = SceneManager.LoadSceneAsync(sceneNames);
+        op.allowSceneActivation = false;
+        yield return op;
     }
 }
+

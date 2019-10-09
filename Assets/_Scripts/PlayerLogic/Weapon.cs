@@ -39,7 +39,7 @@ public class Weapon : Colliderable
     protected override void Start()
     {
         base.Start();
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();      
     }
 
     protected override void Update()

@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1969c1653906134b8dcd672467a288e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundX: 0.3
+  boundX: 0.2
   boundY: 0.15
 --- !u!20 &32945889
 Camera:
@@ -4980,7 +4980,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 5.4337387
+      m_AnimationSpeed: 7.94884
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -49, y: -1, z: 0}
@@ -4998,7 +4998,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 5.5797377
+      m_AnimationSpeed: 6.3136215
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -41, y: -1, z: 0}
@@ -5016,7 +5016,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 6.9376535
+      m_AnimationSpeed: 7.9148593
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -33, y: -1, z: 0}
@@ -5034,7 +5034,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 5.967595
+      m_AnimationSpeed: 7.315749
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -25, y: -1, z: 0}
@@ -5052,7 +5052,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 5.858917
+      m_AnimationSpeed: 9.245601
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -17, y: -1, z: 0}

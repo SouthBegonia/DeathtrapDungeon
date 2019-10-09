@@ -12169,7 +12169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1969c1653906134b8dcd672467a288e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundX: 0.3
+  boundX: 0.2
   boundY: 0.15
 --- !u!20 &519420031
 Camera:
@@ -12199,7 +12199,7 @@ Camera:
   field of view: 40
   orthographic: 1
   orthographic size: 0.95
-  m_Depth: 0
+  m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -12222,7 +12222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.468, z: -1.22}
+  m_LocalPosition: {x: 0, y: -0.468, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14346,7 +14346,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 8.466028
+      m_AnimationSpeed: 6.413282
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 1, y: 5, z: 0}
@@ -14355,7 +14355,7 @@ Tilemap:
       - {fileID: 6649705915440041061, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: 1018569941188019713, guid: c320a1766d556334fa09a7e139213e06, type: 3}
       - {fileID: -4227622105440066591, guid: c320a1766d556334fa09a7e139213e06, type: 3}
-      m_AnimationSpeed: 6.157426
+      m_AnimationSpeed: 9.501357
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -18510,7 +18510,12 @@ PrefabInstance:
     - target: {fileID: 4568980633126897831, guid: ce8ac46d1dba90343a730eca3dfaa773,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568980634262810835, guid: ce8ac46d1dba90343a730eca3dfaa773,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce8ac46d1dba90343a730eca3dfaa773, type: 3}
