@@ -35,7 +35,7 @@ public abstract class Mover : Fighter
             transform.localScale = new Vector3(originalSize.x * -1, originalSize.y, originalSize.y);
 
         //被击退移动
-        //该距离受pushRecoverSpeed系数呈线性减小
+        //被击退距离随pushRecoverSpeed系数呈线性减小
         moveDelta += pushDirection;
         pushDirection = Vector3.Lerp(pushDirection, Vector3.zero, pushRecoverySpeed);
 

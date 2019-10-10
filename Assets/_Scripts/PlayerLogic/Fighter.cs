@@ -34,7 +34,7 @@ public class Fighter : MonoBehaviour
         }
 
         //显示造成伤害UI
-        //舍弃原因:敌人或者Player受伤都显示同类UI,较为混乱;且因为BoxCollider2D过小,告诉碰撞后易出现穿透bug
+        //舍弃原因:敌人或者Player受伤都显示同类UI,较为混乱;且因为BoxCollider2D过小,高速碰撞后易出现穿透bug
         //GameManager.instance.ShowText(dmg.damageAmount.ToString(), 25, Color.red, transform.position, Vector3.zero, 0.5f);
 
         //如果对象血量低于0,则死亡

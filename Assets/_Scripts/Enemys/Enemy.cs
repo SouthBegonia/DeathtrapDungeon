@@ -60,6 +60,7 @@ public class Enemy : Mover
         if (isAlive)
             ChasingTarget();
    
+        //取得重叠的碰撞体
         hitBox.OverlapCollider(filter, hits);
         for (int i = 0; i < hits.Length; i++)
         {

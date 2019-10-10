@@ -8,7 +8,6 @@ public class Player : Mover
     public bool isAlive = true;                 //玩家是否存活
     public float rage = 0;                      //怒气
     public float maxRage = 50;                  //怒气最值
-    //private Vector3 moveTo = new Vector3(0, 0, 0);
 
     protected override void Start()
     {
