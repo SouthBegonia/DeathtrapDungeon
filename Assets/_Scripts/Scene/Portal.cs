@@ -33,8 +33,18 @@ public class Portal : Colliderable
 
             //新场景切换：异步加载
             SceneTranslate.ChangeScene(sceneName);
-            GetComponent<BoxCollider2D>().enabled = false;           
+            GetComponent<BoxCollider2D>().enabled = false;
         }
+    }
+
+    public void StartToChangeScene()
+    {
+        SceneTranslate.ChangeScene(sceneName);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
 

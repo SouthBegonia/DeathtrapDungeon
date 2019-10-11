@@ -50,6 +50,8 @@ public class SceneTranslate : MonoBehaviour
                 SCUISlider.value = 1;
                 SCUI.gameObject.SetActive(false);
                 op.allowSceneActivation = true;
+                //SCUI.gameObject.SetActive(false);
+                //Debug.Log("succe");
                 return;
             }
             else
