@@ -15,8 +15,7 @@ public class Player : Mover
         GetComponent<BoxCollider2D>().enabled = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
         ImmuneTime = 0.75f;
-        Player.DontDestroyOnLoad(gameObject);
-        
+        Player.DontDestroyOnLoad(gameObject);    
     }
 
     private void FixedUpdate()

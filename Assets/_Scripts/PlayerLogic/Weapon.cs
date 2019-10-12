@@ -25,6 +25,7 @@ public class Weapon : Colliderable
     public bool CanRageSkill = false;       //是否可以放技能
     public bool raging = false;             //是否在放技能中
     public float ragingTime = 4f;           //技能持续时间
+    public GameObject rageState;            //技能特效
 
     private void Awake()
     {
@@ -39,7 +40,8 @@ public class Weapon : Colliderable
     protected override void Start()
     {
         base.Start();
-        animator = GetComponent<Animator>();      
+        animator = GetComponent<Animator>();
+        rageState.SetActive(false);
     }
 
     protected override void Update()
@@ -60,7 +62,11 @@ public class Weapon : Colliderable
 
                     //释放技能
                     if (raging)
+                    {                     
                         CreateFlamingSword();
+                    }
+                    else
+                        rageState.SetActive(false);                        
                 }
             }
 
@@ -70,6 +76,7 @@ public class Weapon : Colliderable
                 if (CanRageSkill)
                 {
                     raging = true;
+                    rageState.SetActive(true);
                     StartCoroutine("WaitingForRestRageSkill");
                 }
             }

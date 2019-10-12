@@ -40,7 +40,9 @@ public abstract class Mover : Fighter
         pushDirection = Vector3.Lerp(pushDirection, Vector3.zero, pushRecoverySpeed);
 
         //定向移动:上下左右
-        //当物件处在Blocking层且包含BoxCollider2D时,不可越(wall)
+        //仅当物件处在Blocking层或者Actor层才、且拥有BoxCollider2D时才可被检测到
+        //机理：产生一个大小与boxcollider2D相等的检测矩阵，延伸矩阵朝向至将要抵达的坐标，若存在指定层的物体，则返回与之接触的第一个物体；
+        //      反之为空，表示可以移动到目的地
         hit = Physics2D.BoxCast(transform.position, BoxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
         if (hit.collider == null)
             transform.Translate(0, moveDelta.y * Time.deltaTime, 0);

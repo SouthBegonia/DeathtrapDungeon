@@ -11,7 +11,6 @@ public class Colliderable : MonoBehaviour
     protected virtual void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
-        //Debug.Log(gameObject.name);
     }
 
     protected virtual void Update()
@@ -34,6 +33,4 @@ public class Colliderable : MonoBehaviour
     {
         Debug.Log(coll.name);
     }
-
-    
 }

@@ -117,7 +117,6 @@ public class GameManager : MonoBehaviour
         int currentLevel = GetCurrentLevel();
         experience += xp;
 
-        //获得经验时更新两组UI
         OnUIChange();
 
         if (currentLevel < GetCurrentLevel())
