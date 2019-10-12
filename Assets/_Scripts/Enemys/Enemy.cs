@@ -59,6 +59,8 @@ public class Enemy : Mover
         //仅当Enemy存活时才进行追逐判定
         if (isAlive)
             ChasingTarget();
+        else
+            pushDirection = Vector3.zero;
    
         //取得重叠的碰撞体
         hitBox.OverlapCollider(filter, hits);

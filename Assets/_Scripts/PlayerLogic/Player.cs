@@ -34,6 +34,12 @@ public class Player : Mover
             //moveTo.y = Input.GetAxisRaw("Vertical");
             //UpdateMotor(moveTo, 1);
         }
+        else
+            pushDirection = Vector3.zero;
+        //上述else出现问题：
+        //问题描述：当player死亡重生时，会开场就被击退一段距离
+        //问题分析：原因是player遭受致命一击后立马死亡，但是并未被击退，即当次pushDirection残余到重生后
+        //解决方案：在上面添加else消除pushDirection，同理Enemy中也得修改
     }
 
     //Sprite变换函数:

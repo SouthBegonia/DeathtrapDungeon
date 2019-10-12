@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 160005832}
   - component: {fileID: 160005834}
   - component: {fileID: 160005833}
+  - component: {fileID: 160005835}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -151,7 +152,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1614359578}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.06, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 83}
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7d2999c7c351ea4428351dc86f2731f3, type: 3}
     m_FontSize: 55
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 58
@@ -199,6 +200,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160005831}
   m_CullTransparentMesh: 0
+--- !u!111 &160005835
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160005831}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 6db682013b8c2de409a5bd3562d521e8, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 6db682013b8c2de409a5bd3562d521e8, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &203308969
 GameObject:
   m_ObjectHideFlags: 0
