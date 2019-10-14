@@ -109,6 +109,16 @@
 	4. 非瓦片物体的渲染顺序体现在SpriteRenderer里的SortingLayer和OrderLayer；合理设置遮挡与被遮挡关系
 - **2D碰撞问题**：
 	- 所有物体最好处于同一z=0平面，否则一些碰撞检测容易出问题
+- **Draw Call优化**：
+	- Tilemap地图：占用5+DrawCall，主要体现在墙壁层。由于本例采用了两种类型的美术资源，且含有普通Tile和RuleTile，故此处产生较多DrawCall，因此在往后Tilemap绘制时，应注意美术资源和Tile类型的统一性，此外，对于静态物体设置为static
+	- 装备栏Menu：占用9+DrawCall，由于装备栏信息众多(Weapon、Player的Sprite切换，游戏数值信息等)。不同Sprite的部件众多、Button功能各异、Text字体不一，因此造成较多DrawCall。此处除了统一字体，减少Panel缩放外暂无更好办法
+	- 数值面板HUD：占用4+DrawCall，此处功能为显示画面左上角的数值信息，同样也是存在不同Sprite部件，暂无更优解
+	- Animator物件：被当做Object的Animator物件，可将其CullingMode设置为Cull Completely，即不在视野内时停止运作，可有效降低DrawCall
+- **GC优化**：
+	- 通过Profiler分析脚本中的GC Alloc，找到对应脚本进行代码优化(减少循环内new对象、减少foreach等)，此外对场景中暂时不用的物体进行隐藏
+- **内存优化**：
+	- 由于是2D游戏，本例目前仅对bgm进行了优化，即将其LoadType变更为Streaming流媒体播放形式，大幅降低了运行时占用内存
+	- 其他优化方法：AssetBundle打包、降低贴图大小、采用MipMap等
 
 --------
 
@@ -116,3 +126,5 @@
 - [Unity与C＃制作RPG游戏工作流程教程](https://www.bilibili.com/video/av45071686/?p=1)
 - [16x16 Dungeon Tileset - itch](https://0x72.itch.io/16x16-dungeon-tileset)
 - [2d-extras - UnityTechnology](https://github.com/Unity-Technologies/2d-extras)
+- [Unity优化美术资源的设置 - ww38362087](https://blog.csdn.net/ww386362087/article/details/81365595)
+- [Unity优化减少DrawCall:批处理 - linuxheik](https://blog.csdn.net/linuxheik/article/details/80688109)
