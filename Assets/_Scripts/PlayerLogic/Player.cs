@@ -29,6 +29,7 @@ public class Player : Mover
             UpdateMotor(new Vector3(x, y, 0), 1);
 
             //注:若是用以下方法读取输入,会使得FixedUpdate内的GCAlloc增加数倍
+            //
             //moveTo.x = Input.GetAxisRaw("Horizontal");
             //moveTo.y = Input.GetAxisRaw("Vertical");
             //UpdateMotor(moveTo, 1);
@@ -54,7 +55,6 @@ public class Player : Mover
         hitPoint = maxHitPoint;
 
         GameManager.instance.OnUIChange();
-
     }
     
     //设置等级函数(仅供GameManger内调用)
@@ -102,8 +102,6 @@ public class Player : Mover
         
         if(rage==maxRage)
             GameManager.instance.weapon.CanRageSkill = true;
-
-        //GameManager.instance.OnUIChange();
     }
 
     //恢复生命值函数: 生命值恢复,显示恢复数值UI及刷新生命值UI
@@ -133,8 +131,7 @@ public class Player : Mover
         GameManager.instance.SaveState();
 
         //显示死亡面板
-        GameManager.instance.deathMenuAnim.gameObject.SetActive(true);
-        GameManager.instance.deathMenuAnim.SetTrigger("Show");
+        GameManager.instance.PlayDeathAMN();
 
         //等待一定时间后复活并重新开始
         StartCoroutine("WaitingForRespawn");
@@ -153,8 +150,6 @@ public class Player : Mover
     {
         yield return new WaitForSeconds(6);
         GameManager.instance.Respawn();
-        GameManager.instance.menu.UpdateMenu();
-        GameManager.instance.hud.UpdateHUD();
-        GameManager.instance.deathMenuAnim.gameObject.SetActive(false);
+        GameManager.instance.OnUIChange();
     }
 }

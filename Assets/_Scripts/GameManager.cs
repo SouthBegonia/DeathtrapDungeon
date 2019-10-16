@@ -24,10 +24,7 @@ public class GameManager : MonoBehaviour
     //各类引用:
     public Player player;                           //玩家
     public Weapon weapon;                           //武器
-    public CharacterMenu menu;                      //装备菜单(左下角)
-    public CharacterHUD hud;                        //生命值经验值菜单(左上角)
-    public Animator deathMenuAnim;                  //死亡界面动画
-    public FloatingTextManager FloatingTextManager; //文本显示
+    public UIManager UIManager;                     //UI管理
 
     
     private void Awake()
@@ -38,9 +35,7 @@ public class GameManager : MonoBehaviour
             
             Destroy(player.gameObject);
             Destroy(gameObject);
-            Destroy(FloatingTextManager.gameObject);
-            Destroy(menu.gameObject);
-            Destroy(hud.gameObject);
+            Destroy(UIManager.gameObject);
 
             return;
         }
@@ -52,22 +47,20 @@ public class GameManager : MonoBehaviour
 
         //保留的物体
         DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(GameObject.Find("FloatingTextManager").transform.parent);
-        DontDestroyOnLoad(GameObject.Find("Menu"));
-        DontDestroyOnLoad(GameObject.Find("HUD"));
+        DontDestroyOnLoad(GameObject.Find("UIManager"));
     }
 
-    //通用显示Text信息函数:
-    public void ShowText(string msg, int fontSize, Color color, Vector3 position,Vector3 motion, float duration)
-    {
-        FloatingTextManager.Show(msg, fontSize, color, position,motion, duration);
-    }
 
     //更新各UI信息函数:
     public void OnUIChange()
     {
-        menu.UpdateMenu();
-        hud.UpdateHUD();
+        UIManager.UIUpdate();
+    }
+
+    //Text短信息显示函数：
+    public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
+    {
+        UIManager.ShowText(msg, fontSize, color, position, motion, duration);
     }
 
     //判断武器是否能够升级函数:
@@ -120,29 +113,37 @@ public class GameManager : MonoBehaviour
         OnUIChange();
 
         if (currentLevel < GetCurrentLevel())
-        {
             OnLevelUp();
-        }
     }
     public void OnLevelUp()
     {
         ShowText("LEVEL UP!", 30, Color.yellow, player.transform.position, Vector3.up * 30, 2.0f);
-
-        OnUIChange();
         player.OnLevelUp();
+        OnUIChange();     
+    }
+
+    //启用死亡动画动画：
+    public void PlayDeathAMN()
+    {
+        UIManager.ShowDeathAnimation();
+    }
+    
+    //关闭死亡动画函数：
+    public void CloseDeathAMN()
+    {
+        UIManager.HideDeathAnimation();
     }
 
     //复活函数:
     public void Respawn()
     {
         //隐藏死亡UI,重载主场景
-        deathMenuAnim.SetTrigger("Hide");
-        SceneManager.LoadScene("Main");
-
+        SceneManager.LoadScene(1);
+        CloseDeathAMN();
+        
         //配置重生信息
         player.Respawn();
     }
-
 
     //存储存档的函数:
     public void SaveState()

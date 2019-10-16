@@ -15,6 +15,9 @@ public class SceneTranslate : MonoBehaviour
 
     private void Start()
     {
+        if (SCUI == null)
+            SCUI = GameObject.Find("SCUI").GetComponent<Canvas>();
+        
         SCUI.gameObject.SetActive(false);
         SCUISlider = SCUI.GetComponentInChildren<Slider>();
     }
@@ -24,14 +27,14 @@ public class SceneTranslate : MonoBehaviour
         UpdateSlider();
     }
 
-    public void ChangeScene(string sceneName)
+    public void ChangeToScene(string sceneName)
     {
         //开启场景切换时的UI：黑布+进度条
         SCUI.gameObject.SetActive(true);
         SCUISlider.value = 0;
 
         //开启异步加载协程
-        StartCoroutine(processLoading(sceneName));
+        StartCoroutine(ProcessLoading(sceneName));
     }
 
     private void UpdateSlider()
@@ -60,7 +63,7 @@ public class SceneTranslate : MonoBehaviour
         }
     }
 
-    IEnumerator processLoading(string sceneName)
+    IEnumerator ProcessLoading(string sceneName)
     {
         //设置异步加载的场景
         op = SceneManager.LoadSceneAsync(sceneName);

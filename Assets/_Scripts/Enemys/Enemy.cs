@@ -74,7 +74,6 @@ public class Enemy : Mover
             {
                 collidingWithPlayer = true;
             }
-
             hits[i] = null;
         }
     }
@@ -82,7 +81,6 @@ public class Enemy : Mover
     //追逐玩家函数:
     protected virtual void ChasingTarget()
     {
-
         //若Player在Enemy原始坐标chaseLength范围内时,可能被追逐
         if ((Vector3.Distance(playTransform.position, startingPosition) < chaseLength) && GameManager.instance.player.isAlive)
         {

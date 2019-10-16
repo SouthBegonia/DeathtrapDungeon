@@ -13,12 +13,6 @@ public class CharacterHUD : MonoBehaviour
 
     public Text level;                  //等级text
 
-    private void Start()
-    {
-        //初始时刷新1次,否则出现经验值等于存档不符
-        UpdateHUD();
-    }
-
 
     //Menu菜单更新函数:
     public void UpdateHUD()
@@ -46,7 +40,6 @@ public class CharacterHUD : MonoBehaviour
 
             float completionRatio = (float)currXpIntoLevel / (float)diff;
             xpBar.localScale = new Vector3(completionRatio, 1, 1);
-
         }
 
         //更新RageBar

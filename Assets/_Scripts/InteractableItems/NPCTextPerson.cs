@@ -36,7 +36,6 @@ public class NPCTextPerson : Colliderable
             else if (posDelta < 0)
                 transform.localScale = new Vector3(-1, 1, 1);
         }
-
     }
 
     //碰撞触发NPC对话函数:实现多段对话循环播放
@@ -52,8 +51,6 @@ public class NPCTextPerson : Colliderable
 
             if (msgNow == messages.Length)
                 msgNow = 0;
-            //Debug.Log("msgNow = " + msgNow);
         }
-
     }
 }

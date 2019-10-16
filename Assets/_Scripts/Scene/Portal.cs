@@ -11,13 +11,15 @@ using UnityEngine.UI;
 //结果1：还行，bgm播放较正常
 public class Portal : Colliderable
 {
-    public string sceneName;   //所加载的场景
+    public string sceneName;                //所加载的场景
     private SceneTranslate SceneTranslate;  //场景切换脚本
 
     protected override void Start()
     {
         base.Start();
-        SceneTranslate = GetComponentInChildren<SceneTranslate>();
+        if (SceneTranslate == null)
+            SceneTranslate = GetComponentInChildren<SceneTranslate>();
+
         GetComponent<BoxCollider2D>().enabled = true;
     }
 
@@ -28,18 +30,15 @@ public class Portal : Colliderable
             //储存各类信息
             GameManager.instance.SaveState();
 
-            //切换场景：旧方法直接切换
-            //SceneManager.LoadScene(sceneName);
-
             //新场景切换：异步加载
-            SceneTranslate.ChangeScene(sceneName);
             GetComponent<BoxCollider2D>().enabled = false;
+            ChangeSceneTo(sceneName);         
         }
     }
 
-    public void StartToChangeScene()
+    public void ChangeSceneTo(string sceneName)
     {
-        SceneTranslate.ChangeScene(sceneName);
+        SceneTranslate.ChangeToScene(sceneName);
     }
 
     public void QuitGame()

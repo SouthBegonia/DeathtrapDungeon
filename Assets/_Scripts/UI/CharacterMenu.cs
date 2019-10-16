@@ -14,12 +14,6 @@ public class CharacterMenu : MonoBehaviour
     public RectTransform xpBar;                         //经验条
 
 
-    private void Start()
-    {
-        //初始时刷新1次,否则出现经验值等于存档不符
-        UpdateMenu();
-    }
-
     //人物切换按钮:
     public void OnArrowClick(bool right)
     {
