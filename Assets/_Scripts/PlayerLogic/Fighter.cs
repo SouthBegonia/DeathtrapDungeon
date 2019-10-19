@@ -6,12 +6,13 @@ using UnityEngine;
 public class Fighter : MonoBehaviour
 {
     //基本参数:生命值,最大生命值,速度恢复系数
+    [Header("------生命值系统------")]
     public int hitPoint = 10;               //当前生命值
     public int maxHitPoint = 10;            //最大生命值
     public float pushRecoverySpeed = 0.2f;  //被击退后恢复运动状态
 
     //免疫时间参数
-    protected float ImmuneTime = 0.75f;
+    protected float ImmuneTime = 0.2f;
     protected float lastImmune;
 
     //被击攻击参数:击退距离

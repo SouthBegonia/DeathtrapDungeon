@@ -8,23 +8,25 @@ public class GameManager : MonoBehaviour
     //单例
     public static GameManager instance;
 
-    //资源:
-    public List<Sprite> playerSprites;              //玩家Sprite
-    public List<Sprite> weaponSprites;              //武器Sprite
-    public bool _____________________;
-
     //游戏数值:
+    [Header("------游戏数值------")]
     public int pesos;                               //金币
     public int experience;                          //经验
-
     public List<int> weaponPrices;                  //武器价格表
     public List<int> xpTable;                       //升级经验表    
-    public bool ______________________;
+
+    //资源:
+    [Header("------资源------")]
+    public List<Sprite> playerSprites;              //玩家Sprite
+    public List<Sprite> weaponSprites;              //武器Sprite
+
 
     //各类引用:
+    [Header("------引用------")]
     public Player player;                           //玩家
     public Weapon weapon;                           //武器
     public UIManager UIManager;                     //UI管理
+    public SaveManager SaveManager;                 //存档管理
 
     
     private void Awake()
@@ -36,7 +38,7 @@ public class GameManager : MonoBehaviour
             Destroy(player.gameObject);
             Destroy(gameObject);
             Destroy(UIManager.gameObject);
-
+            Destroy(SaveManager.gameObject);
             return;
         }
                
@@ -44,10 +46,12 @@ public class GameManager : MonoBehaviour
 
         //加载存档
         SceneManager.sceneLoaded += LoadState;
+        //LoadState();
 
         //保留的物体
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(GameObject.Find("UIManager"));
+        DontDestroyOnLoad(GameObject.Find("SaveManager"));
     }
 
 
@@ -84,6 +88,7 @@ public class GameManager : MonoBehaviour
     //XP升级系统:
     public int GetCurrentLevel()
     {
+        //取得当前等级
         int l = 0, add = 0;
         while (experience >= add)
         {
@@ -97,6 +102,7 @@ public class GameManager : MonoBehaviour
     }
     public int GetXPToLevel(int level)
     {
+        //取得当前等级为多少exp
         int l = 0, xp = 0;
         while (l < level)
         {
@@ -107,6 +113,7 @@ public class GameManager : MonoBehaviour
     }
     public void GrantXP(int xp)
     {
+        //获得经验值
         int currentLevel = GetCurrentLevel();
         experience += xp;
 
@@ -122,24 +129,14 @@ public class GameManager : MonoBehaviour
         OnUIChange();     
     }
 
-    //启用死亡动画动画：
-    public void PlayDeathAMN()
-    {
-        UIManager.ShowDeathAnimation();
-    }
-    
-    //关闭死亡动画函数：
-    public void CloseDeathAMN()
-    {
-        UIManager.HideDeathAnimation();
-    }
 
     //复活函数:
     public void Respawn()
     {
         //隐藏死亡UI,重载主场景
         SceneManager.LoadScene(1);
-        CloseDeathAMN();
+        UIManager.HideDeathAnimation();
+        //CloseDeathAMN();
         
         //配置重生信息
         player.Respawn();
@@ -148,59 +145,50 @@ public class GameManager : MonoBehaviour
     //存储存档的函数:
     public void SaveState()
     {
-        Debug.Log("SaveState");
-        
+        //Debug.Log("SaveState");
+        SaveManager.SaveGame();
         //游戏数值载体s
-        string s = "";
+        //string s = "";
 
         //以s字符串为载体储存游戏数值信息, '|'为间隔符,区分开各类游戏数值
-        s += "0" + "|";                     //data[0]
-        s += pesos.ToString() + "|";        //data[1] 金币
-        s += experience.ToString() + "|";   //data[2] 经验值
-        s += weapon.weaponLevel.ToString() + "|"; //data[3] 武器等级
+        //s += "0" + "|";                     //data[0]
+        //s += pesos.ToString() + "|";        //data[1] 金币
+        //s += experience.ToString() + "|";   //data[2] 经验值
+        //s += weapon.weaponLevel.ToString() + "|"; //data[3] 武器等级
 
         //存储游戏信息字符串
-        PlayerPrefs.SetString("SaveState", s);      
+        //PlayerPrefs.SetString("SaveState", s);      
     }
 
     //加载存档的函数:
     public void LoadState(Scene s, LoadSceneMode sceneMode)
     {
-        Debug.Log("LoadState");
+        //Debug.Log("LoadState");
+        SaveManager.LoadGame();
 
         //备注:是Save不是Sava,千万别写错,否则找不到
-        if (!PlayerPrefs.HasKey("SaveState"))
-            return;
+        //if (!PlayerPrefs.HasKey("SaveState"))
+        //    return;
 
         //取得各游戏信息到data[]内
-        string[] data = PlayerPrefs.GetString("SaveState").Split('|');
+        //string[] data = PlayerPrefs.GetString("SaveState").Split('|');
         //    s: "10|20|30|5"   => "10" "20" "30" "5"
         //Debug.Log("data:" + data[0] + "|" + data[1] + "|" + data[2] + "|" + data[3]);
 
         //加载金币
-        pesos = int.Parse(data[1]);
+        //pesos = int.Parse(data[1]);
 
         //加载经验及玩家等级
-        experience = int.Parse(data[2]);
+        //experience = int.Parse(data[2]);
         if (GetCurrentLevel() != 1)
             player.SetLevel(GetCurrentLevel());
 
         //加载武器
-        weapon.SetWeaponLevel(int.Parse(data[3]));
+        //weapon.SetWeaponLevel(int.Parse(data[3]));
 
         //设置场景出生地
         player.transform.position = GameObject.Find("SpawnPoint").transform.position;
 
         OnUIChange();
-    }
-
-    //当游戏退出时，清零所有数值
-    private void OnApplicationQuit()
-    {
-        pesos = 0;
-        experience = 0;
-        player.rage = 0;
-        weapon.weaponLevel = 0;
-        SaveState();
     }
 }

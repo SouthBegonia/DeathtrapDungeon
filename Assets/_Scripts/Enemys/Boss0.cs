@@ -49,13 +49,4 @@ public class Boss0 : Enemy
             spriteRenderer.color = Color.red;
         }
     }
-
-    ////该Boss死亡即被销毁,无需重生
-    //protected override void Death()
-    //{
-    //    GameManager.instance.GrantXP(xpValue);
-    //    GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
-
-    //    Destroy(gameObject);
-    //}
 }

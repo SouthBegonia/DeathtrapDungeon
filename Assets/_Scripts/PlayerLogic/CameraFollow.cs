@@ -80,10 +80,11 @@ public class CameraFollow : MonoBehaviour
 
         //旧方法：设定相机的最新位置，无差值平滑过渡
         //transform.position += new Vector3(delts.x, delts.y, 0);
+        transform.position = destination;
     }
 
     private void LateUpdate()
     {
-        transform.position = destination;
+        //transform.position = destination;
     }
 }

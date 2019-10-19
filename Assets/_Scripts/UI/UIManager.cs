@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("------包含面板------")]
     public CharacterMenu characterMenu;             //装备菜单(左下角)
     public CharacterHUD characterHUD;               //生命值经验值菜单(左上角)
     public FloatingTextManager floatingTextManager; //文本显示
 
+    [Header("------特殊状态机------")]
     public Animator deathMenuAnim;                  //死亡界面动画
+
     
     private void Start()
     {
@@ -41,5 +44,10 @@ public class UIManager : MonoBehaviour
     {
         deathMenuAnim.gameObject.SetActive(true);
         deathMenuAnim.SetTrigger("Show");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

@@ -16,7 +16,7 @@ public class Weapon : Colliderable
 
     //武器控制参数:
     private Animator animator;              //动画组件
-    private float swingCoolDown = 0.5f;     //武器攻击冷却时间
+    private  float swingCoolDown = 0.5f;     //武器攻击冷却时间
     private float lastSwing;
 
     //Rage技能参数:
@@ -89,7 +89,7 @@ public class Weapon : Colliderable
     protected override void OnCollide(Collider2D coll)
     {
         //必须为可被伤害类物体才可进行伤害检验
-        if (coll.tag == "Fighter")
+        if (coll.CompareTag("Fighter"))
         {
             //武器不可伤害到玩家
             if (coll.name == "Player")

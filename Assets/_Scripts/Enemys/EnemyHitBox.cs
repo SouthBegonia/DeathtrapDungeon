@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHitBox : Collectable
 {
+    [Header("------伤害参数------")]
     public int damage;
     public float pushForce;
 

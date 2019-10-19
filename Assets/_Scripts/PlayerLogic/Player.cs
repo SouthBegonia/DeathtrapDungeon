@@ -6,6 +6,8 @@ public class Player : Mover
 {
     private SpriteRenderer spriteRenderer;      //玩家当前Sprite
     public bool isAlive = true;                 //玩家是否存活
+
+    [Header("------怒气系统------")]
     public float rage = 0;                      //怒气
     public float maxRage = 50;                  //怒气最值
 
@@ -15,7 +17,8 @@ public class Player : Mover
         GetComponent<BoxCollider2D>().enabled = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
         ImmuneTime = 0.75f;
-        Player.DontDestroyOnLoad(gameObject);    
+        Player.DontDestroyOnLoad(gameObject);
+        OnRageChange(0f);
     }
 
     private void FixedUpdate()
@@ -125,13 +128,8 @@ public class Player : Mover
         isAlive = false;
         transform.localEulerAngles = new Vector3(0, 0, 90);
 
-        //死亡惩罚:
-        GameManager.instance.pesos = 0;
-        rage = 0;
-        GameManager.instance.SaveState();
-
         //显示死亡面板
-        GameManager.instance.PlayDeathAMN();
+        GameManager.instance.UIManager.ShowDeathAnimation();
 
         //等待一定时间后复活并重新开始
         StartCoroutine("WaitingForRespawn");
