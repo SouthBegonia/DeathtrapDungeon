@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 488028963}
   - component: {fileID: 488028964}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RageState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4568980633126897831}
   - component: {fileID: 4568980633126897832}
   - component: {fileID: 4568980633126897833}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.1, y: 0.29}
+    oldSize: {x: 0.1010101, y: 0.2929293}
     newSize: {x: 0.1010101, y: 0.2929293}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -225,12 +225,13 @@ MonoBehaviour:
   - 3.6
   - 4
   weaponLevel: 0
+  animator: {fileID: 0}
   flamingSword: {fileID: 9010854077145415047, guid: 20db0104af6f590469a14ba547deecf3,
     type: 3}
+  rageState: {fileID: 488028962}
   CanRageSkill: 0
   raging: 0
   ragingTime: 4
-  rageState: {fileID: 488028962}
 --- !u!95 &4568980633126897833
 Animator:
   serializedVersion: 3
@@ -348,9 +349,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bcfcbded3c2bc46a40a139c159f2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoint: 10
-  maxHitPoint: 10
-  pushRecoverySpeed: 0.2
+  hitPoint: 100
+  maxHitPoint: 100
+  pushRecoverySpeed: 0.3
   isAlive: 1
   rage: 0
   maxRage: 50
@@ -367,18 +368,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.018768184, y: -0.025133416}
+  m_Offset: {x: 0.024793874, y: 0.004097387}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.15, y: 0.2}
+    oldSize: {x: 0.15151516, y: 0.2020202}
     newSize: {x: 0.15151516, y: 0.2020202}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.11397879, y: 0.13386282}
+  m_Size: {x: 0.12603018, y: 0.19232443}
   m_EdgeRadius: 0
 --- !u!81 &3251907379065370912
 AudioListener:
