@@ -11,6 +11,9 @@ public class Player : Mover
     public float rage = 0;                      //怒气
     public float maxRage = 50;                  //怒气最值
 
+    //转向攻击矫正系统
+    private float temp = 0f;
+
     protected override void Start()
     {
         base.Start();
@@ -25,9 +28,18 @@ public class Player : Mover
     {
         //获取移动值,使用公用移动函数UpdateMotor(),按 指定位置/移动速度倍数 进行移动
         if (isAlive)
-        {
+        {           
             float x = Input.GetAxisRaw("Horizontal");
             float y = Input.GetAxisRaw("Vertical");
+
+            //检测移动前后帧Player方向是否相同
+            //若不同则将Weapon的Swing动画立即停止并转换到idle
+            //否则正常，等待Swing动画播放完毕切换到idle
+            //实现功能：攻击时转向则立即停止攻击动作
+            if (transform.localScale.x == temp)
+                GameManager.instance.weapon.animator.SetBool("SameDirection", true);
+            else GameManager.instance.weapon.animator.SetBool("SameDirection", false);
+            temp = transform.localScale.x;
 
             UpdateMotor(new Vector3(x, y, 0), 1);
 

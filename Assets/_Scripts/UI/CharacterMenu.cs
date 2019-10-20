@@ -6,13 +6,18 @@ using UnityEngine.UI;
 //装备菜单的UI:包括武器升级,人物切换,显示生命值/等级/金币,经验值
 public class CharacterMenu : MonoBehaviour
 {
-    public Text levelTextMenu, hitpointText, pesosText, upgradeCostText, xpText;
+    [Header("------Text------")]
+    public Text levelTextMenu;
+    public Text hitpointText, pesosText, upgradeCostText, xpText;
 
-    private int currentCharacterSelection = 0;          //当前选择的PlayerSprite序号
+    [Header("------Sprite/Image------")]  
     public Image characterSprite;                       //Player的Sprite
     public Image weaponSprite;                          //Weapon的Sprite
-    public RectTransform xpBar;                         //经验条
+    private int currentCharacterSelection = 0;          //当前选择的PlayerSprite序号
 
+    [Header("------其他------")]
+    public RectTransform xpBar;                         //经验条
+    public GameObject savingTextObject;
 
     //人物切换按钮:
     public void OnArrowClick(bool right)
@@ -86,5 +91,21 @@ public class CharacterMenu : MonoBehaviour
             xpBar.localScale = new Vector3(completionRatio, 1, 1);
             xpText.text = currXpIntoLevel.ToString() + " / " + diff;
         }
+    }
+
+    public void ShowSavingText()
+    {
+        if (savingTextObject.activeSelf != true)
+        {
+            savingTextObject.SetActive(true);
+            Invoke("HideSavingText", 2);
+        }
+        else
+            return;
+    }
+
+    private void HideSavingText()
+    {
+        savingTextObject.SetActive(false);
     }
 }

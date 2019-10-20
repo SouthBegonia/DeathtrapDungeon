@@ -44,6 +44,19 @@ public class SaveManager : MonoBehaviour
         //GameManager.instance.ShowText("Game Saved Successfully", 40, Color.white, transform.position + new Vector3(0, 0.18f, 0), Vector3.zero, showTime);
     }
 
+
+    public void SaveGame(Save save)
+    {
+        string path = Application.dataPath + "/SaveData.json";
+        string jsonStr = JsonMapper.ToJson(save);
+
+        StreamWriter sw = new StreamWriter(path);
+        sw.Write(jsonStr);
+        sw.Close();
+
+        Debug.Log("Saves");
+    }
+
     //JSON读取
     public void LoadGame()
     {
@@ -65,6 +78,22 @@ public class SaveManager : MonoBehaviour
             Debug.Log("Game Loaded");
         }
         else
-            Debug.Log("No game saved!");
+        {
+            NewGame();
+            LoadGame();
+        }
+    }
+
+    //创建新存档
+    public void NewGame()
+    {
+        Save save = new Save
+        {
+            pesos = 0,
+            experience = 0,
+            WeaponLevel = 0,
+            rage = 0
+        };
+        SaveGame(save);
     }
 }

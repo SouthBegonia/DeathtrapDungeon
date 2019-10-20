@@ -6,26 +6,32 @@ using UnityEngine;
 public class Weapon : Colliderable
 {
     //各等级武器伤害参数:
-    public int[] damagePoint = { 1, 2, 3, 4, 5, 6, 7 };     //武器造成伤害
+    [Header("------伤害参数------")]
+    public int[] damagePoint = { 1, 2, 3, 4, 5, 6, 7 };                         //武器造成伤害
     public float[] pushForce = { 2.0f, 2.2f, 2.5f, 3.0f, 3.3f, 3.6f, 4.0f };    //武器推力
 
     //武器等级参数:
+    [Header("------等级参数------")]
     public int weaponLevel = 0;             //当前武器等级
     private SpriteRenderer SpriteRenderer;  //当前武器的Spite
-    public GameObject flamingSword;         //光刃
+    
 
     //武器控制参数:
-    private Animator animator;              //动画组件
-    private  float swingCoolDown = 0.5f;     //武器攻击冷却时间
+    [Header("------控制参数------")]
+    public Animator animator;              //动画组件
+    private  float swingCoolDown = 0.4f;   //武器攻击冷却时间
     private float lastSwing;
 
     //Rage技能参数:
     //- Rage技能效果:普攻发出光刃,对敌人造成远程伤害
     //- Rage技能释放要求:在Player内收到伤害积累怒气rage,怒气满值即可释放
+    [Header("------Rage技能参数------")]
+    public GameObject flamingSword;         //光刃
+    public GameObject rageState;            //技能特效
     public bool CanRageSkill = false;       //是否可以放技能
     public bool raging = false;             //是否在放技能中
     public float ragingTime = 4f;           //技能持续时间
-    public GameObject rageState;            //技能特效
+    
 
     private void Awake()
     {

@@ -21,7 +21,7 @@ public class Enemy : Mover
 
     [Header("------经验值----")]
     public int xpValue = 1;                 //击杀获得经验值
-    
+
 
     //追逐逻辑: 
     [Header("------追逐逻辑----")]
@@ -139,10 +139,11 @@ public class Enemy : Mover
         }
     }
 
+    //开启状态显示：半血以上/半血以下
     private void OpenStateSprite()
     {
         enemyStateSprite.enabled = true;
-        if (hitPoint / maxHitPoint < 0.5)
+        if ((float)hitPoint / (float)maxHitPoint < 0.5)
             enemyStateSprite.sprite = stateSprites[1];
         else
             enemyStateSprite.sprite = stateSprites[0];
@@ -159,7 +160,7 @@ public class Enemy : Mover
         //玩家获得经验,显示+xp的UI
         GameManager.instance.GrantXP(xpValue);
         GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
-        
+
         //按需决定是否可以复活
         if (canRespawn)
         {

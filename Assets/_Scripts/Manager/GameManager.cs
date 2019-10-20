@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(GameObject.Find("SaveManager"));
     }
 
+    
+
 
     //更新各UI信息函数:
     public void OnUIChange()
@@ -136,7 +138,6 @@ public class GameManager : MonoBehaviour
         //隐藏死亡UI,重载主场景
         SceneManager.LoadScene(1);
         UIManager.HideDeathAnimation();
-        //CloseDeathAMN();
         
         //配置重生信息
         player.Respawn();
@@ -145,11 +146,12 @@ public class GameManager : MonoBehaviour
     //存储存档的函数:
     public void SaveState()
     {
-        //Debug.Log("SaveState");
+        //JSON存储
         SaveManager.SaveGame();
+
+        ////旧方法：PlayPrefabs存储
         //游戏数值载体s
         //string s = "";
-
         //以s字符串为载体储存游戏数值信息, '|'为间隔符,区分开各类游戏数值
         //s += "0" + "|";                     //data[0]
         //s += pesos.ToString() + "|";        //data[1] 金币
@@ -163,7 +165,6 @@ public class GameManager : MonoBehaviour
     //加载存档的函数:
     public void LoadState(Scene s, LoadSceneMode sceneMode)
     {
-        //Debug.Log("LoadState");
         SaveManager.LoadGame();
 
         //备注:是Save不是Sava,千万别写错,否则找不到
