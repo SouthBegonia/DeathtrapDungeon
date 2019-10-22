@@ -32,6 +32,7 @@
 
 ![](https://img2018.cnblogs.com/blog/1688704/201910/1688704-20191014092708669-1567758134.gif)
 
+![](https://img2018.cnblogs.com/blog/1688704/201910/1688704-20191022220131532-786062296.gif)
 
 
 <h1 id="3">绘图资源</h1>
@@ -43,30 +44,34 @@
 <h1 id="4">代码实现</h1>
 
 **总控系统：**
-- GameManager.cs：单例模式，统一管理各类的实例，及游戏数据(经验，金币，各类Sprite)，升级系统，UI管理，场景管理，存读档机制等
+- GameManager.cs：单例模式，统一管理各类的实例
 
-**生命值系统：** 
-- Fighter.cs：生命值，最大生命值，击退系数；伤害系统
-
+**基类：** 
+- 生命值类：Fighter.cs（生命值，伤害系统）
+- 移动类：Mover.cs（移动系统）
+- 交互类：Collectable.cs（检测碰撞体是否为Player）
 
 **Player**：
 - Player.cs：Rage怒气系统；换皮肤，死亡重生等
-- Mover.cs：移动系统
 - Weapon：武器攻击系统，Rage技能系统
 
 **Enemy**：
+- EnemyHitBox.cs：传输伤害到玩家
 - Enemy.cs：大部分敌人的类，包含经验值，追逐攻击系统，死亡复活系统等
 - Enemy_Chest.cs：宝箱怪
 - Trap.cs：陷阱
 - Boss0.cs：最终boss
 
 **GUI**：
-- FloatingTextManager/FloatingText.cs：浮动文本显示系统
+- UIManager.cs：UI管理
 - CharacterMenu.cs：菜单栏系统
 - CharacterHUD.cs：玩家生命值，经验值，怒气值显示，死亡页面
+- SCUI.cs：异步切换场景加载画面
+- FloatingTextManager/FloatingText.cs：浮动文本显示系统
 
 **场景**：
 - CameraFollow.cs：相机跟随系统
+- SceneTranslate.csa：异步加载场景系统
 - Portal.cs：不同场景传送门
 - Portal_Door.cs：当前场景传送门
 
@@ -77,19 +82,14 @@
 - HealingFountain：治愈泉水
 - Door.cs：开关门
 
+![](https://img2018.cnblogs.com/blog/1688704/201910/1688704-20191022220208959-2106713466.png)
+![](https://img2018.cnblogs.com/blog/1688704/201910/1688704-20191022220216548-386181557.png)
+![](https://img2018.cnblogs.com/blog/1688704/201910/1688704-20191022220224478-570747477.png)
+![](https://img2018.cnblogs.com/blog/1688704/201910/1688704-20191022220238304-1366744285.png)
+
 --------------------
 
-<h1 id="5">*注意事项</h1>
-
-游戏的核心机制，如战斗，场景切换，物体交互等**已成型**，且Tilemap完善(地面层，上下墙壁层，地表物件层，碰撞层)，除了基本的静态Tiles外，还有几个AnimatedTile(泉水，熔岩等)，及ChestBrush宝箱笔刷方便宝箱的摆放设置等等。如想要自行**定制关卡**，完全可以基于此脚本系统下，对Tilemap的重绘、游戏数值、场景物件摆放、NPC台词等即可。
-
-此外，[itch.io](https://itch.io/game-assets)网站内含有大量优秀的2D绘图资源，可按需合法使用。
-
-![](https://img2018.cnblogs.com/blog/1688704/201909/1688704-20190928211702664-1369000020.gif)
-
--------------
-
-<h1 id="6">技术探讨</h1>
+<h1 id="5">技术探讨</h1>
 
 - **关于武器挥动进行攻击的animation**：
 	1. 武器的Swing动画时间建议大于0.3s，否则间隔过短即便每次都能攻击到敌人但不足以有效推开敌人而被攻击
@@ -121,6 +121,16 @@
 	- 其他优化方法：AssetBundle打包、降低贴图大小、采用MipMap等
 
 --------
+
+<h1 id="6">*注意事项</h1>
+
+游戏的核心机制，如战斗，场景切换，物体交互等**已成型**，且Tilemap完善(地面层，上下墙壁层，地表物件层，碰撞层)，除了基本的静态Tiles外，还有几个AnimatedTile(泉水，熔岩等)，及ChestBrush宝箱笔刷方便宝箱的摆放设置等等。如想要自行**定制关卡**，完全可以基于此脚本系统下，对Tilemap的重绘、游戏数值、场景物件摆放、NPC台词等即可。
+
+此外，[itch.io](https://itch.io/game-assets)网站内含有大量优秀的2D绘图资源，可按需合法使用。
+
+![](https://img2018.cnblogs.com/blog/1688704/201909/1688704-20190928211702664-1369000020.gif)
+
+-------------
 
 <h1 id="7">参考来源</h1>
 - [Unity与C＃制作RPG游戏工作流程教程](https://www.bilibili.com/video/av45071686/?p=1)
